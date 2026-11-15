@@ -37,6 +37,11 @@ These are the real photos on the rover cards and in the garage (`art/photos/`). 
 - How it was made: https://science.nasa.gov/mission/voyager/making-of-the-golden-record/
 - The 115 images: https://science.nasa.gov/gallery/images-on-the-golden-record/
 
+### Voyager 1 facts (NASA Science)
+
+- Voyager 1 mission page: https://science.nasa.gov/mission/voyager/voyager-1/
+- Where are Voyager 1 and Voyager 2 now (one light-day milestone): https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/
+
 ### Sounds and music
 
 - Low energy: https://pixabay.com/sound-effects/musical-low-energy-197725/
