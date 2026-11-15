@@ -5,7 +5,7 @@
     { "fx": ["black", "rumble"], "sfx": "audio/rocket_takeoff_sound.mp3", "sfxVolume": 0.5, "wait": 2200 },
     { "fx": "calm", "sfx": "audio/explosion.mp3", "sfxVolume": 0.3, "wait": 500 },
     { "stamp": ["Stop 1: Tranquility Base", "Sea of Tranquility, the Moon"] },
-    { "bg": "art/bg/moon.png", "pan": "zoomOut", "music": "audio/moon-theme.mp3", "fx": "fadeInSlow" },
+    { "bg": "art/bg/moon.png", "pan": "zoomOut", "music": null, "fx": "fadeInSlow" },
     { "say": "MICHAEL", "text": "Touchdown. Everything feels so light here." },
     { "say": "AURORA", "text": "Look. Four gold legs and a ladder. That's the bottom half of Eagle, from Apollo 11." },
     { "rover": "eagle" },

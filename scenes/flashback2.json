@@ -5,7 +5,7 @@
     { "stamp": ["Before the Launch", "An abandoned launch site"] },
     { "say": "MICHAEL", "text": "This rocket is rusty, but the frame is solid. I think we can fix it." },
     { "say": "EMILY", "text": "I wrote it in my log: found an old rocket, day 17. Might make a nice museum one day." },
-    { "bg": "art/bg/rocket-scrapyard.png", "pan": "zoomIn", "sfx": "audio/workshop.mp3", "say": "", "text": "For weeks they scraped, welded and tested every part, one bolt at a time." },
+    { "bg": "art/bg/rocket-scrapyard.png", "pan": "zoomIn", "say": "", "text": "For weeks they scraped, welded and tested every part, one bolt at a time." },
     { "puzzle": "wires", "config": { "title": "Rewire the control panel", "prompt": "Connect each wire to the terminal of the same color.", "colors": ["red", "blue", "yellow", "green"], "hint": "Follow each color from left to right. Start with the one that is easiest to see.", "learnTitle": "Why colors matter", "learn": "Engineers use color codes so nobody mixes up wires. On the Apollo spacecraft, thousands of wires were labeled and checked by hand, because one wrong connection could stop a whole mission." } },
     { "puzzle": "screws", "config": { "title": "Seal the hatch", "prompt": "Tighten the screws in a criss-cross pattern so the hatch closes evenly.", "hint": "After a screw, go to the one diagonally opposite.", "learnTitle": "The criss-cross rule", "learn": "Tightening bolts in a star or criss-cross pattern spreads the pressure evenly. If you tighten one side first, the panel can bend and leak. Spacecraft hatches must seal perfectly, because outside there is no air at all." } },
     { "say": "AURORA", "text": "Great work, team! But there is a problem..." },
