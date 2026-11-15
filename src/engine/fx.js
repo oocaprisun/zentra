@@ -28,6 +28,9 @@ const effects = {
   black: () => { const f = $('#fade'); f.style.transition = 'none'; f.classList.remove('white'); f.classList.add('on'); void f.offsetWidth; f.style.transition = ''; },
   // hide the subtitle box (e.g. before a silent pause)
   hideDialog: () => hideDialog(),
+  // subtitles show above a black "fadeOut" screen (e.g. a last line on black); cleared by "textBelow"
+  textOnTop: () => $('#stage').classList.add('text-top'),
+  textBelow: () => $('#stage').classList.remove('text-top'),
   // fade to full black over 6 s, then hide the subtitle
   fadeOutSlow: async () => { await slowFade(true); hideDialog(); },
   // blend the black screen back into the picture over 6 s

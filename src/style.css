@@ -62,6 +62,7 @@ img { image-rendering: pixelated; }
 #stamp { position: absolute; left: 120px; bottom: 150px; z-index: 21; /* above #fade: titles can show on a black screen */ font-family: var(--font-hud); color: var(--amber); font-size: 30px; line-height: 1.5; text-shadow: 0 2px 0 rgba(0,0,0,.6); transition: opacity .6s; }
 #stamp div:first-child { font-size: 44px; color: var(--ink); }
 #stamp.out { opacity: 0; }
+#stage.text-top #dialog { z-index: 22; } /* fx "textOnTop": dialogue above the black #fade */
 /* "stampStyle": "red" (flashbacks, back to the opening) */
 /* "stampStyle": "plate": white text on a black box behind each line, for bright backgrounds */
 #stamp.plate div, #stamp.plate div:first-child { width: fit-content; color: #fff; background: #000; padding: 4px 18px; margin-bottom: 8px; text-shadow: none; }

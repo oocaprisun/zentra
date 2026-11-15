@@ -46,8 +46,8 @@ async function play(from) {
     catch (e) { console.error(e); }
   }
   save(null);
-  // story finished: back to a fresh main menu after 5 seconds (drops any ?scene= jump)
-  setTimeout(() => location.replace(location.pathname), 5000);
+  // story finished: back to a fresh main menu (the last scene already holds its final line ~5 s; drops any ?scene= jump)
+  setTimeout(() => location.replace(location.pathname), 500);
 }
 
 const go = $('#go');

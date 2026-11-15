@@ -12,8 +12,8 @@
     { "fx": "hideDialog", "musicVolume": 0.2, "musicFade": 2000, "wait": 2000 },
     { "bg": "art/bg/bunker-door.png", "actors": [], "music": null,
       "sfx": "audio/knocking.mp3", "wait": 2500 },
-    { "sfx": "audio/cough.wav", "wait": 500},
-    { "say": "", "text": "Someone is out there." },
-    { "fx": "fadeOut" }
+    { "sfx": "audio/cough.wav", "wait": 1200 },
+    { "fx": "fadeOut", "wait": 800 },
+    { "fx": "textOnTop", "say": "", "text": "Someone is out there.", "auto": 5500 }
   ]
 }
