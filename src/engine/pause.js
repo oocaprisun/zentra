@@ -18,7 +18,7 @@ menu.setAttribute('role', 'dialog');
 menu.setAttribute('aria-label', 'Paused');
 menu.innerHTML = `<div class="pause-box"><h2>Paused</h2>${sliders.map(([k, label]) =>
   `<label class="pause-row"><span>${label}</span><input type="range" min="0" max="100" data-k="${k}"><output></output></label>`).join('')}
-  <button id="resume">Resume</button><small>Esc to resume</small></div>`;
+  <button id="resume">Resume</button><button id="to-menu" type="button">Main menu</button><small>Esc to resume</small></div>`;
 $('#stage').append(menu);
 
 for (const input of menu.querySelectorAll('input')) {
@@ -47,6 +47,8 @@ export function setPaused(p) {
 }
 
 $('#resume').addEventListener('click', () => setPaused(false));
+// progress is saved at the start of every scene, so the menu's "Resume mission" picks up from this scene
+$('#to-menu').addEventListener('click', () => location.replace(location.pathname));
 addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     e.preventDefault();

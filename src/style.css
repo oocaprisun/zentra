@@ -91,6 +91,8 @@ img { image-rendering: pixelated; }
 .pause-row input:focus-visible { outline: 4px solid var(--ink); outline-offset: 6px; }
 .pause-box button { align-self: flex-start; margin-top: 12px; }
 .pause-box small { font-size: 22px; color: var(--steel); }
+.pause-box #to-menu { margin-top: 0; background: transparent; color: var(--ink); box-shadow: inset 0 0 0 4px var(--steel); font-size: 26px; padding: 14px 28px; }
+.pause-box #to-menu:hover { box-shadow: inset 0 0 0 4px var(--ink); }
 
 /* small gray controls help, bottom-right of every puzzle */
 .pz-controls { position: absolute; right: 56px; bottom: 36px; text-align: right; font-size: 22px; line-height: 1.5; color: var(--muted); }
