@@ -60,8 +60,7 @@
       {"img": "art/chars/aurora_astronaut.png", "x": 11},
       {"img": "art/chars/clyde_astronaut.png", "x": 24},
       {"img": "art/chars/michael_astronaut.png", "x": 37},
-      {"img": "art/props/perseverance.png", "x": 70, "h": 640},
-      {"img": "art/props/ingenuity.png", "x": 90, "h": 340}
+      {"img": "art/props/ingenuity.png", "x": 72, "h": 420}
     ],  "fx": "flash", "say": "", "text": "Last stop: Jezero Crater, an ancient lake bed." },
     { "stamp": ["Stop 3: Ingenuity", "Jezero Crater, Mars"] },
     { "say": "AURORA", "text": "A helicopter. On Mars. Ingenuity rode here under the belly of the Perseverance rover." },

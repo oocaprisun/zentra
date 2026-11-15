@@ -7,7 +7,8 @@ import './achievements.js';
 import { sfx } from './engine/audio.js';
 import { resetCollected } from './cards.js';
 import './orrery.js';
-import './garage.js';
+import { openGarage, DOOR } from './garage.js';
+import { collected } from './cards.js';
 
 // click sound for UI buttons only (menus, pause, collect, skip); not for puzzle pieces
 const isUiButton = (t) => t.closest?.('button') && !t.closest('.pz-body');
@@ -45,6 +46,8 @@ async function play(from) {
     catch (e) { console.error(e); }
   }
   save(null);
+  // story finished: back to a fresh main menu after 5 seconds (drops any ?scene= jump)
+  setTimeout(() => location.replace(location.pathname), 5000);
 }
 
 const go = $('#go');
@@ -58,6 +61,19 @@ if (saved > 0 && !jump) {
   resume.addEventListener('click', () => { resume.blur(); play(saved); }, { once: true });
   resume.focus();
 } else go.focus();
+
+// Garage button on the main menu, once a mission has been started (saved progress or collected cards)
+let started = saved >= 0;
+try { started ||= collected().length > 0; } catch {}
+if (started) {
+  const gb = document.createElement('button');
+  gb.type = 'button';
+  gb.id = 'menu-garage';
+  gb.className = 'ach-open';
+  gb.innerHTML = `${DOOR}<span>Garage</span>`;
+  gb.addEventListener('click', () => openGarage(true));
+  $('#start .menu-actions').append(gb);
+}
 
 // Card preview: index.html?card=sojourner (one card) or ?card=all (every card in rovers.json)
 const card = new URLSearchParams(location.search).get('card');

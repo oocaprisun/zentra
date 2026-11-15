@@ -28,7 +28,7 @@
       { "img": "art/chars/aurora_astronaut.png", "x": 11 },
       { "img": "art/chars/michael_astronaut.png", "x": 24 },
       { "img": "art/chars/clyde_astronaut.png", "x": 37 },
-      { "img": "art/props/surveyor.png", "x": 72, "h": 340 }
+      { "img": "art/props/surveyor.png", "x": 72, "h": 560 }
     ], "fx": "flash", "say": "", "text": "A short hop west, to the Ocean of Storms." },
     { "stamp": ["Stop 2: Surveyor 3", "Ocean of Storms, the Moon"] },
     { "say": "MICHAEL", "text": "A small robot lander, from 1967. Someone took its camera." },

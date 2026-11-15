@@ -16,7 +16,7 @@ const ARROW = (dir) => `<svg viewBox="0 0 12 16" shape-rendering="crispEdges" ar
     ? '<rect x="6" y="0" width="3" height="2"/><rect x="4" y="2" width="3" height="2"/><rect x="2" y="4" width="3" height="2"/><rect x="0" y="6" width="3" height="4"/><rect x="2" y="10" width="3" height="2"/><rect x="4" y="12" width="3" height="2"/><rect x="6" y="14" width="3" height="2"/>'
     : '<rect x="3" y="0" width="3" height="2"/><rect x="5" y="2" width="3" height="2"/><rect x="7" y="4" width="3" height="2"/><rect x="9" y="6" width="3" height="4"/><rect x="7" y="10" width="3" height="2"/><rect x="5" y="12" width="3" height="2"/><rect x="3" y="14" width="3" height="2"/>'
 }</svg>`;
-const DOOR = `<svg viewBox="0 0 16 14" shape-rendering="crispEdges" aria-hidden="true" fill="currentColor"><rect x="6" y="0" width="4" height="2"/><rect x="3" y="2" width="10" height="2"/><rect x="0" y="4" width="16" height="2"/><rect x="1" y="6" width="2" height="8"/><rect x="13" y="6" width="2" height="8"/><rect x="4" y="7" width="8" height="1"/><rect x="4" y="9" width="8" height="1"/><rect x="4" y="11" width="8" height="1"/><rect x="4" y="13" width="8" height="1"/></svg>`;
+export const DOOR = `<svg viewBox="0 0 16 14" shape-rendering="crispEdges" aria-hidden="true" fill="currentColor"><rect x="6" y="0" width="4" height="2"/><rect x="3" y="2" width="10" height="2"/><rect x="0" y="4" width="16" height="2"/><rect x="1" y="6" width="2" height="8"/><rect x="13" y="6" width="2" height="8"/><rect x="4" y="7" width="8" height="1"/><rect x="4" y="9" width="8" height="1"/><rect x="4" y="11" width="8" height="1"/><rect x="4" y="13" width="8" height="1"/></svg>`;
 
 // ---- the Hangar button ----
 const btn = document.createElement('button');
@@ -47,7 +47,7 @@ const bay = g.querySelector('.gar-bay');
 const plate = g.querySelector('.gar-plate');
 const info = g.querySelector('.gar-info');
 
-let list = [], data = {}, idx = 0, current = null, busy = false, wasPaused = false, lastFocus = null;
+let list = [], data = {}, idx = 0, current = null, busy = false, wasPaused = false, lastFocus = null, fromMenu = false;
 
 function canOpen() {
   return SCENES.includes(state.scene) && state.lines > 0 && !state.talking && !state.skipping && !state.paused
@@ -157,16 +157,21 @@ function closeInfo() {
   return true;
 }
 
-async function open() {
-  if (!canOpen()) return;
+// menu: true when opened from the main menu (no mission running behind it)
+export async function openGarage(menu = false) {
+  if (!menu && !canOpen()) return;
+  fromMenu = menu;
+  g.querySelector('.gar-back').textContent = menu ? 'Back to menu' : 'Back to mission';
   data = await rovers();
   list = Object.keys(data);
   if (!list.length) return;
   lastFocus = document.activeElement;
   wasPaused = state.paused;
-  state.paused = true;               // freezes dialogue, timers and scene animations
-  $('#stage').classList.add('paused', 'in-garage');
-  audio.pauseMusic(true);
+  if (!fromMenu) {
+    state.paused = true;             // freezes dialogue, timers and scene animations
+    $('#stage').classList.add('paused', 'in-garage');
+    audio.pauseMusic(true);
+  }
   if (!bgImg.getAttribute('src')) bgImg.src = BG;
   bay.querySelector('.gar-slot')?.remove();
   idx = 0;
@@ -181,14 +186,16 @@ function close() {
   if (g.hidden) return;
   info.hidden = true;
   g.hidden = true;
-  state.paused = wasPaused;
-  $('#stage').classList.remove('paused', 'in-garage');
-  audio.pauseMusic(false);
+  if (!fromMenu) {
+    state.paused = wasPaused;
+    $('#stage').classList.remove('paused', 'in-garage');
+    audio.pauseMusic(false);
+  }
   lastFocus?.focus?.();
   btn.blur();
 }
 
-btn.addEventListener('click', open);
+btn.addEventListener('click', () => openGarage());
 g.querySelector('.gar-back').addEventListener('click', close);
 g.querySelector('.gar-prev').addEventListener('click', () => cycle(-1));
 g.querySelector('.gar-next').addEventListener('click', () => cycle(1));

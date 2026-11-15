@@ -97,6 +97,8 @@ function sizeOf(src) {
 async function talk(img) {
   const base = img.dataset.base ??= img.getAttribute('src');
   if (!base || base.startsWith('data:')) return () => {};
+  // only PNGs have _talking frames; swapping a GIF's src would restart its animation
+  if (!/\.png$/i.test(base)) return () => {};
   // helmets on: astronaut / space-suit sprites never use the talking animation
   if (/(_astronaut|-space)[^/]*\.png$/i.test(base)) return () => {};
   const alt = base.replace(/\.png$/, '_talking.png');
@@ -110,10 +112,15 @@ async function talk(img) {
 // opts.speed = ms per letter (default 28), opts.auto = continue by itself after N ms (no key press)
 export async function say(who, text, style, opts = {}) {
   if (state.skipping) return;
+  // radio lines: static keeps playing until the player moves on from the line
+  const stopStatic = style === 'radio' ? audio.radioLoop(() => state.paused) : null;
+  try { await sayLine(who, text, style, opts); } finally { stopStatic?.(); }
+}
+
+async function sayLine(who, text, style, opts) {
   const d = $('#dialog');
   d.hidden = false;
   d.className = style || (who ? '' : 'narration');
-  if (style === 'radio') audio.radioStatic();
   $('#who').textContent = who ? who + ':' : '';
   // put the subtitle above the speaking character (if on screen); dim the others
   const actors = [...document.querySelectorAll('#actors img')];

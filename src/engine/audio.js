@@ -52,7 +52,25 @@ export function pop() {
   a.play().catch(() => {});
 }
 
-// short burst of radio static, played automatically before every "style": "radio" line
+// radio static for the whole time a "style": "radio" line is on screen:
+// a short louder burst, then a quieter hiss under the words. Returns stop().
+// isPaused() is polled so the hiss stops while the pause menu or garage is open.
+export function radioLoop(isPaused = () => false) {
+  const a = new Audio('audio/radio_static.mp3');
+  a.loop = true;
+  const t0 = performance.now();
+  const level = () => Math.min(1, volume.sfx * (performance.now() - t0 < 600 ? 0.3 : 0.12));
+  a.volume = level();
+  a.play().catch(() => {});
+  const timer = setInterval(() => {
+    a.volume = level();
+    if (isPaused()) { if (!a.paused) a.pause(); }
+    else if (a.paused) a.play().catch(() => {});
+  }, 100);
+  return () => { clearInterval(timer); a.pause(); };
+}
+
+// short burst of radio static
 export function radioStatic(ms = 600) {
   const a = new Audio('audio/radio_static.mp3');
   a.volume = Math.min(1, volume.sfx * 0.3);
