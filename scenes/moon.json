@@ -60,7 +60,7 @@
       { "img": "art/chars/aurora_astronaut.png", "x": 11 },
       { "img": "art/chars/michael_astronaut.png", "x": 24 },
       { "img": "art/chars/clyde_astronaut.png", "x": 37 },
-      { "img": "art/props/rover.png", "x": 72, "h": 320 }
+      { "img": "art/props/rover.png", "x": 72, "h": 400 }
     ], "fx": "flash", "say": "", "text": "Last stop: the foot of the Apennine Mountains." },
     { "stamp": ["Stop 3: Hadley-Apennine", "Apollo 15 landing site"] },
     { "say": "AURORA", "text": "A car on the Moon. Apollo 15's rover, the first one ever driven here." },
