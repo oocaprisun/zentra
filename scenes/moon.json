@@ -57,7 +57,7 @@
       "layout": "column",
       "hint": "The pictures came last, less than an hour after it settled.",
       "learnTitle": "Wet sand",
-      "learn": "Surveyor 3 bounced twice before landing on April 20, 1967. Then it dug trenches with a scoop and sent 6,326 pictures. The soil felt like wet sand, strong enough to hold a crewed lander. That told NASA the Apollo astronauts could land safely."
+      "learn": "Surveyor 3 bounced twice before landing on April 20, 1967. Then it dug trenches with a scoop and sent 6,326 pictures. The soil felt like wet sand, strong enough to hold a crewed lander. That told ZENTRA the Apollo astronauts could land safely."
     } },
     { "say": "CLYDE", "text": "This little robot checked the ground so people could follow." },
 
@@ -73,7 +73,7 @@
     { "say": "MICHAEL", "text": "In 1971 they drove almost 28 kilometers with it, and brought back 77 kilos of rocks." },
     { "say": "CLYDE", "text": "And over there, their science station. It ran on heat from a small plutonium generator." },
     { "say": "MICHAEL", "text": "Heat in, electricity out, for years, with no sun needed. If we copy that design, the bunker never goes dark." },
-    { "say": "EMILY", "style": "radio", "text": "It sent data to Earth for six years, until NASA switched all the stations off in September 1977." },
+    { "say": "EMILY", "style": "radio", "text": "It sent data to Earth for six years, until ZENTRA switched all the stations off in September 1977." },
     { "say": "AURORA", "text": "Our rover is still folded on the ship. Let's do it the way they did." },
     { "puzzle": "order", "config": {
       "title": "Unfold the rover",
