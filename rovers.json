@@ -126,7 +126,12 @@
     "rank": "unreal",
     "stats": { "Speed": 100, "Endurance": 100, "Science": 100 },
     "achievement": { "title": "The end?", "text": "Find Voyager 1, still talking to Earth." },
-    "info": { "text": [], "photos": ["art/photos/voyager-1/1.jpg", "art/photos/voyager-1/2.jpg"] },
+    "info": { "text": [
+      "Voyager 1 launched on September 5, 1977, from Cape Canaveral on a Titan IIIE-Centaur rocket. It left 16 days after its twin, Voyager 2, but on a faster path, and passed it that December. It weighs 722 kg and runs on three radioisotope generators, the same kind of plutonium power the Apollo science stations used on the Moon.",
+      "It flew past Jupiter on March 5, 1979, and found a faint ring around the planet, two new moons, Thebe and Metis, and active volcanoes on Io, the first ever seen beyond Earth. At Saturn on November 12, 1980, it found five new moons and a new ring, and flew close to Titan, whose thick nitrogen haze hides its surface. That close pass bent its path up and out of the plane of the planets, so it never visited another one.",
+      "On February 14, 1990, about 6 billion km from home, it turned its camera back and took the last pictures of the mission: a family portrait of the planets that includes the Pale Blue Dot, Earth as a single speck of light. On February 17, 1998, it passed Pioneer 10 to become the most distant human-made object. It reached the termination shock, where the solar wind slows down, on December 16, 2004, and on August 25, 2012, it left the Sun's bubble and became the first spacecraft in interstellar space.",
+      "It still sends data home, but its power drops a little every year, so engineers switch off heaters and instruments one by one to keep it talking. They turned off another instrument in April 2026. On November 18, 2026, it was due to reach one light-day from Earth, about 25.9 billion km, the first human-made object to get that far. A radio message now takes a full day to reach it and another day for the answer to come back, while it keeps moving at about 17 km per second."
+    ], "photos": ["art/photos/voyager-1/1.jpg", "art/photos/voyager-1/2.jpg"] },
     "extra": {
       "name": "The Golden Record",
       "img": "art/props/golden_record.png",
