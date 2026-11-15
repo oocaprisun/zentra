@@ -1,0 +1,36 @@
+.dial-wrap { display: flex; align-items: center; justify-content: center; gap: 72px; padding: 24px; }
+.dial-knob-box { width: 400px; height: 400px; border-radius: 50%; cursor: grab; touch-action: none; outline: none; user-select: none; }
+.dial-knob-box:active { cursor: grabbing; }
+.dial-knob-box:focus-visible { box-shadow: 0 0 0 var(--px) var(--amber); }
+.dial-svg { width: 100%; height: 100%; display: block; }
+.dial-rim { fill: var(--steel); }
+.dial-face { fill: #1b2236; stroke: #0c101c; stroke-width: 6; }
+.dial-ticks rect { fill: var(--ink); }
+.dial-needle rect { fill: var(--amber); }
+.dial-needle rect:last-child { fill: var(--rust); stroke: var(--ink); stroke-width: 4; }
+.dial-shake { animation: dial-shake 0.4s steps(2, end); }
+@keyframes dial-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-14px); } 40% { transform: translateX(12px); } 60% { transform: translateX(-8px); } 80% { transform: translateX(6px); } }
+
+.dial-side { display: flex; flex-direction: column; gap: 24px; align-items: stretch; min-width: 460px; }
+.dial-readout { background: #0a0d16; color: var(--amber); font-family: var(--font-hud); padding: 18px 28px; text-align: right;
+  box-shadow: 0 0 0 var(--px) var(--steel), 0 0 0 calc(var(--px) * 2) #0a0d16, calc(var(--px) * 2) calc(var(--px) * 2) 0 calc(var(--px) * 2) rgba(0,0,0,.5); }
+.dial-num { font-size: 110px; line-height: 1; letter-spacing: 2px; }
+.dial-unit { font-size: 36px; margin-left: 16px; color: var(--ink); }
+.dial-ok { animation: dial-flash 0.25s steps(2, end) 3; }
+.dial-ok .dial-num { color: #7dff8a; }
+@keyframes dial-flash { 50% { background: #2c4a2a; } }
+.dial-label { font-family: var(--font-text); color: var(--ink); font-size: 30px; text-align: center; }
+
+.dial-meter { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; padding: 10px; background: #0a0d16; box-shadow: 0 0 0 var(--px) var(--steel); }
+.dial-meter i { height: 44px; background: #1b2236; display: block; }
+.dial-meter i.on { background: var(--steel); }
+.dial-meter i.mid { background: var(--amber); }
+.dial-meter i.hot { background: #7dff8a; }
+
+.dial-lock { font-size: 36px; padding: 20px 32px; }
+.dial-lock:disabled { opacity: .7; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dial-shake, .dial-ok { animation: none; }
+  .dial-shake { outline: var(--px) solid var(--rust); }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "earth_final",
+  "steps": [
+    { "bg": "art/bg/bunker-hq.png", "pan": "zoomIn",
+      "actors": [{ "img": "art/chars/emily_crying.png", "x": 50 }],
+      "music": "audio/crying.wav", "musicVolume": 0.5,
+      "fx": "fadeInSlow" },
+    { "stamp": ["Earth", "1 day after impact"], "stampStyle": "red" },
+    { "say": "", "text": "The bunker is quiet. The radio has said nothing for hours." },
+    { "say": "EMILY", "text": "Aurora... please. Just say something." },
+    { "say": "EMILY", "text": "You promised you'd come back." },
+    { "fx": "hideDialog", "musicVolume": 0.2, "musicFade": 2000, "wait": 2000 },
+    { "bg": "art/bg/bunker-door.png", "actors": [], "music": null,
+      "sfx": "audio/knocking.mp3", "wait": 2500 },
+    { "sfx": "audio/cough.wav", "wait": 500},
+    { "say": "", "text": "Someone is out there." },
+    { "fx": "fadeOut" }
+  ]
+}

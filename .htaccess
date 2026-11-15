@@ -1,0 +1,42 @@
+# Zentra - Apache config (most shared hosting). Safe to delete on Nginx/Netlify/etc.
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_mime.c>
+  AddType text/javascript        .js .mjs
+  AddType application/json       .json
+  AddType font/woff2             .woff2
+  AddType image/svg+xml          .svg
+  AddType audio/mpeg             .mp3
+  AddType audio/wav              .wav
+  AddCharset utf-8               .html .js .css .json
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # code and story files change when you update the game: always revalidate
+  ExpiresByType text/html          "access plus 0 seconds"
+  ExpiresByType text/javascript    "access plus 0 seconds"
+  ExpiresByType text/css           "access plus 0 seconds"
+  ExpiresByType application/json   "access plus 0 seconds"
+  # art, audio and fonts: cache for a week
+  ExpiresByType image/png          "access plus 7 days"
+  ExpiresByType image/jpeg         "access plus 7 days"
+  ExpiresByType image/gif          "access plus 7 days"
+  ExpiresByType image/svg+xml      "access plus 7 days"
+  ExpiresByType audio/mpeg         "access plus 7 days"
+  ExpiresByType audio/wav          "access plus 7 days"
+  ExpiresByType font/woff2         "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  <FilesMatch "\.(html|js|css|json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

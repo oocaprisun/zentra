@@ -1,0 +1,20 @@
+{
+  "id": "opening",
+  "suits": true,
+  "steps": [
+    { "bg": "art/bg/opening-corridor.png", "pan": "zoomIn", "music": "audio/alarm_scary.mp3", "fx": ["fadeIn", "alarm"] },
+    { "stamp": ["ZENTRA / 0 days before impact", "Return trajectory, Mars to Earth"] },
+    { "fx": "shake", "sfx": "audio/explosion.mp3", "sfxVolume": 0.5, "say": "AURORA", "text": "WHAT WAS THAT!" },
+    { "fx": "shake", "say": "CLYDE", "text": "AN ASTEROID!?" },
+    { "fx": "shake", "sfx": "audio/explosion.mp3", "sfxVolume": 0.3, "say": "MICHAEL", "text": "Try to stop the fuel pumps NOW!" },
+    { "say": "EMILY", "style": "radio", "text": "Is everyone okay? What is your status?"},
+    { "say": "MICHAEL", "text": "An asteroid hit us and we don't know how to stop the fire from the engine."},
+    { "fx": ["shake", "rumble"], "say": "AURORA", "text": "The wires are destroyed by the fire! We will have to fix the leak by hand."},
+    { "fx": "shake", "say": "CLYDE", "text": "I am not going in there. It's so damn hot i will get roasted like a chicken!"},
+    { "say": "MICHAEL", "text": "Man up Clyde! It's either this or we die!"},
+    { "fx": "shake", "sfx": "audio/explosion.mp3", "sfxVolume": 0.6, "say": "AURORA", "text": "WHAT WAS TH", "speed": 30, "auto": 0 },
+    { "sfx": "audio/explosion.mp3", "fx": ["calm", "shake", "whiteout"], "music": null },
+    { "sfx": "audio/flashbang.mp3" },
+    { "fx": "clear", "wait": 5000 }
+  ]
+}

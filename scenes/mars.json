@@ -1,0 +1,85 @@
+{
+  "id": "mars",
+  "suits": true,
+  "steps": [
+    { "fx": ["black", "rumble"], "music": null, "sfx": "audio/rocket_takeoff_sound.mp3", "sfxVolume": 0.5, "wait": 2200 },
+    { "fx": "calm", "sfx": "audio/explosion.mp3", "sfxVolume": 0.3, "wait": 500 },
+    { "stamp": ["Stop 1: Mars Pathfinder", "Ares Vallis, Mars"] },
+    { "bg": "art/bg/mars.png", "pan": "zoomOut", "actors": [
+      {"img": "art/chars/aurora_astronaut.png", "x": 14},
+      {"img": "art/chars/michael_astronaut.png", "x": 30},
+      {"img": "art/chars/clyde_astronaut.png", "x": 46},
+      {"img": "art/props/sojourner.png", "x": 72, "h": 96}
+    ], "fx": "fadeInSlow" },
+    { "fx": "shake", "say": "MICHAEL", "text": "We're down. Hard, but in one piece." },
+    { "say": "AURORA", "text": "We came down on Mars, and we couldn't choose the spot." },
+    { "say": "EMILY", "style": "radio", "text": "Message received. Your signal takes minutes to reach me now, so I'll keep this short. Good luck." },
+    { "say": "CLYDE", "text": "Look at those rocks. This valley was carved by a giant flood, long ago." },
+    { "say": "AURORA", "text": "And there, the Carl Sagan Memorial Station. Mars Pathfinder, landed on July 4, 1997." },
+    { "say": "MICHAEL", "text": "It came down wrapped in giant airbags and bounced about 15 times, like a beach ball." },
+    { "say": "CLYDE", "text": "Then a rover the size of a microwave rolled down its ramp. Sojourner. Only 10.6 kilos." },
+    { "rover": "sojourner" },
+    { "say": "AURORA", "text": "If we copy those airbags, we can drop supplies anywhere on Earth without breaking them." },
+    { "puzzle": "dial", "config": {
+      "title": "Time the airbags",
+      "prompt": "Pathfinder is falling. Inflate the airbags at the right height above the ground.",
+      "min": 0, "max": 500, "target": 100, "tolerance": 15, "unit": "m",
+      "hint": "Too high and they slow you down too early. Too low and there is no time. Think of a football field.",
+      "learnTitle": "The beach ball landing",
+      "learn": "Pathfinder's computer inflated its airbags about 100 meters above Mars. It hit the ground at 14 m/s, bounced as high as 15 meters, and rolled to a stop about 1 km away. Its pictures of rounded pebbles showed that Mars once had running water."
+    } },
+    { "say": "MICHAEL", "text": "Over 16,000 pictures from the lander and 550 from Sojourner. Not bad for 1997, but we can do better with all these tech combined." },
+
+    { "bg": "art/bg/mars.png", "pan": "right", "music": "audio/rocket_engine_background.mp3", "musicVolume": 0.6, "fx": "flash", "say": "", "text": "Spirit and Opportunity were twin rovers, landed on opposite sides of Mars. A long flight east." },
+    { "bg": "art/bg/mars.png", "pan": "zoomIn", "actors": [
+      {"img": "art/chars/clyde_astronaut.png", "x": 12},
+      {"img": "art/chars/aurora_astronaut.png", "x": 26},
+      {"img": "art/chars/michael_astronaut.png", "x": 40},
+      {"img": "art/props/opportunity.png", "x": 72, "h": 440}
+    ],  "music": null, "fx": "flash" },
+    { "stamp": ["Stop 2: Opportunity", "Meridiani Planum, Mars"] },
+    { "say": "CLYDE", "text": "There it is. Covered in dust. Opportunity landed in January 2004, three weeks after its twin, Spirit." },
+    { "rover": "opportunity" },
+    { "say": "AURORA", "text": "It was planned for 90 days. It drove for almost 15 years, 45 kilometers in total." },
+    { "say": "MICHAEL", "text": "In June 2018 a dust storm covered the whole planet and blocked the sun. Its solar panels went dark." },
+    { "say": "CLYDE", "text": "It's real last signal was just data. People love to create drama from anything." }, 
+    { "say": "AURORA", "text": "It was just a journalist who probably wanted his article to reach first page to earn more." },
+    { "say": "EMILY", "style": "radio", "text": "Fun fact from the old archives: only Perseverance ever drove farther on Mars, in October 2026." },
+    { "say": "AURORA", "text": "Its panels still work. Let's wire them into our battery and bring them home." },
+    { "puzzle": "wires", "config": {
+      "title": "Wire up Opportunity's panels",
+      "prompt": "Connect each cable from the solar panel to the matching battery socket.",
+      "colors": ["red", "blue", "yellow", "green", "white"],
+      "hint": "Do the color you see best first. The letters on each plug help too.",
+      "learnTitle": "Rovers that study water",
+      "learn": "Spirit and Opportunity were robot geologists. By studying rocks, they confirmed that water stayed on the surface of ancient Mars for a long time. Wind sometimes blew the dust off Opportunity's solar panels, which helped it survive for years."
+    } },
+    { "say": "MICHAEL", "text": "Power is flowing. Fifteen years of dust storms, and these panels still work." },
+
+    { "bg": "art/bg/mars.png", "pan": "left", "actors": [
+      {"img": "art/chars/aurora_astronaut.png", "x": 11},
+      {"img": "art/chars/clyde_astronaut.png", "x": 24},
+      {"img": "art/chars/michael_astronaut.png", "x": 37},
+      {"img": "art/props/perseverance.png", "x": 70, "h": 640},
+      {"img": "art/props/ingenuity.png", "x": 90, "h": 340}
+    ],  "fx": "flash", "say": "", "text": "Last stop: Jezero Crater, an ancient lake bed." },
+    { "stamp": ["Stop 3: Ingenuity", "Jezero Crater, Mars"] },
+    { "say": "AURORA", "text": "A helicopter. On Mars. Ingenuity rode here under the belly of the Perseverance rover." },
+    { "rover": "ingenuity" },
+    { "say": "CLYDE", "text": "The air here is less than one percent as thick as on Earth. Flying should be almost impossible." },
+    { "say": "MICHAEL", "text": "First flight: April 19, 2021. It was supposed to fly five times in 30 days. It flew 72 times in almost three years." },
+    { "say": "AURORA", "text": "Only 1.8 kilos. A flying scout. With a few of these, we could search the whole Earth for survivors." },
+    { "say": "CLYDE", "text": "Then we take it home safely. Secure its mount." },
+    { "puzzle": "screws", "config": {
+      "title": "Secure Ingenuity",
+      "prompt": "Tighten the four bolts of the carrying mount in a criss-cross pattern.",
+      "doneLabel": "SECURED",
+      "hint": "After a bolt, go to the one diagonally opposite.",
+      "learnTitle": "A Wright Brothers moment",
+      "learn": "Ingenuity was the first aircraft to make a powered, controlled flight on another planet. It flew for 128.8 minutes in total, covered 17 km and climbed as high as 24 meters. A solar panel charged its batteries, enough for about one 90-second flight per Martian day."
+    } },
+    { "say": "MICHAEL", "text": "Airbags, solar panels, a helicopter. Our new rover is starting to take shape." },
+    { "say": "AURORA", "text": "Everyone aboard. We're going home." },
+    { "fx": ["clear", "fadeOut"], "music": null }
+  ]
+}

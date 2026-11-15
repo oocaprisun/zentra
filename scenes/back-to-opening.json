@@ -1,0 +1,17 @@
+{
+  "id": "back-to-opening",
+  "suits": true,
+  "steps": [
+    { "bg": "art/bg/opening-corridor.png", "pan": "zoomIn", "music": "audio/alarm_scary.mp3", "fx": ["fadeIn", "alarm"] },
+    { "stamp": ["ZENTRA   / Mission Day 365", "Now"], "stampStyle": "red" },
+    { "say": "AURORA", "text": "Engine two is still burning." },
+    { "say": "CLYDE", "text": "I can't stop it. The valve won't close!" },
+    { "say": "AURORA", "style": "radio", "text": "The fuel line is cracked. Get to the suits. Now!" },
+    { "say": "MICHAEL", "text": "The capsule with all the parts is sealed. Launching it home!" },
+    { "say": "EMILY", "style": "radio", "text": "Capsule away. It is on course for Earth. I will catch it." },
+    { "say": "MICHAEL", "text": "Go, go, go!", "speed": 12, "auto": 300 },
+    { "bg": "art/bg/ship-exterior.png", "pan": "zoomOut", "fx": ["clear", "shake"], "sfx": "audio/explosion.mp3", "sfxVolume": 0.5, "music": null, "wait": 1200 },
+    { "fx": ["shake", "whiteout"], "sfx": "audio/explosion.mp3" },
+    { "sfx": "audio/flashbang.mp3", "wait": 3000 }
+  ]
+}

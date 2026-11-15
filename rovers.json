@@ -1,0 +1,146 @@
+//1280x720px images
+
+{
+  "eagle": {
+    "name": "Eagle",
+    "mission": "Apollo 11 lunar module, Moon",
+    "nickname": "The Doorstep",
+    "year": 1969,
+    "planet": "moon",
+    "img": "art/props/eagle.png",
+    "rank": "legendary",
+    "stats": { "Speed": 30, "Endurance": 45, "Science": 72 },
+    "achievement": { "title": "One small step", "text": "Find Eagle at Tranquility Base." },
+    "info": {
+      "text": [
+        "Eagle was the Apollo 11 lunar module, and the first crewed vehicle to land on the Moon. It launched on a Saturn V from Cape Canaveral on July 16, 1969, with Neil Armstrong and Buzz Aldrin aboard, and touched down in the Sea of Tranquility on July 20 at 20:17 UT. Fully fuelled, it weighed 15,103 kg.",
+        "The crew spent about 21 and a half hours on the surface. They collected 21.55 kg of rock and soil plus two core samples, and set up a small solar-powered science package with a seismometer and a dust detector. A laser retroreflector went down nearby; it needs no power at all. The science package stopped taking commands on August 27, 1969.",
+        "The descent stage served as the launch pad for the ascent stage and was left on the Moon. The ascent stage docked with the command module and was cast off into lunar orbit on July 22. Where it ended up is unknown. It probably crashed into the Moon within one to four months."
+      ],
+      "photos": ["art/photos/eagle/1.jpg", "art/photos/eagle/2.jpg"]
+    }
+  },
+  "surveyor-3": {
+    "name": "Surveyor 3",
+    "mission": "Robot lander, Ocean of Storms, Moon",
+    "nickname": "The Bouncer",
+    "year": 1967,
+    "planet": "moon",
+    "img": "art/props/surveyor.png",
+    "rank": "legendary",
+    "stats": { "Speed": 20, "Endurance": 68, "Science": 80 },
+    "achievement": { "title": "Third bounce lucky", "text": "Find Surveyor 3 in the Ocean of Storms." },
+    "info": {
+      "text": [
+        "Surveyor 3 was a robotic lander. It launched on an Atlas Centaur from Cape Canaveral on April 17, 1967, and reached the southeastern Ocean of Storms three days later.",
+        "The landing did not go to plan. Bright rocks confused the descent radar, so the engine failed to shut off at about 14 feet. Surveyor 3 bounced twice, first to about 33 feet and then to about 10, before it settled.",
+        "Less than an hour later it was sending TV pictures, 6,326 of them in the end. Its scoop could reach 5 feet out and dig 7 inches down, and controllers on Earth used it to dig four trenches and run bearing and impact tests. The soil behaved like wet sand and was firm enough to hold an Apollo lunar module. Contact ended on May 4, 1967, two days into the lunar night.",
+        "Two and a half years later it had visitors. Apollo 12 landed about 180 m away on November 18, 1969, and the next day Pete Conrad and Alan Bean walked over to it. They brought home about 10 kg of parts, including the camera and the soil scoop, so scientists could see what the Moon had done to them."
+      ],
+      "photos": ["art/photos/surveyor-3/1.jpg", "art/photos/surveyor-3/2.jpg"]
+    }
+  },
+  "lrv": {
+    "name": "Lunar Rover",
+    "mission": "Apollo 15, Hadley-Apennine, Moon",
+    "nickname": "Moon Buggy",
+    "year": 1971,
+    "planet": "moon",
+    "img": "art/props/rover.png",
+    "rank": "legendary",
+    "stats": { "Speed": 62, "Endurance": 40, "Science": 66 },
+    "achievement": { "title": "Moon driver", "text": "Find the Apollo 15 rover at Hadley." },
+    "info": {
+      "text": [
+        "The Lunar Roving Vehicle rode to the Moon stowed in Apollo 15's lunar module, Falcon. Falcon launched on July 26, 1971, and landed on July 30 in Mare Imbrium, at the foot of the Apennine Mountains. Dave Scott and Jim Irwin unloaded the rover on their first moonwalk. No vehicle like it had been used on the Moon before.",
+        "With the rover the crew could explore up to about 5 km from the lander. They drove 10.3 km on the first moonwalk, 12.5 km on the second and 5.1 km on the third. Across three moonwalks totalling 18 hours 35 minutes they covered 27.9 km and brought back 77.31 kg of rock and soil.",
+        "Falcon stayed on the surface for almost 67 hours. Before leaving, Scott dropped a hammer and a feather side by side in the vacuum on live TV. The crew left a plaque and a small figure in memory of fourteen American and Soviet space explorers who had died, and an experiment station that kept working until September 1977."
+      ],
+      "photos": ["art/photos/lrv/1.jpg", "art/photos/lrv/2.jpg"]
+    }
+  },
+  "sojourner": {
+    "name": "Sojourner",
+    "mission": "Mars Pathfinder, Ares Vallis, Mars",
+    "nickname": "The Microwave",
+    "year": 1997,
+    "planet": "mars",
+    "img": "art/props/sojourner.png",
+    "rank": "legendary",
+    "stats": { "Speed": 8, "Endurance": 55, "Science": 74 },
+    "achievement": { "title": "Small but mighty", "text": "Find Sojourner in Ares Vallis." },
+    "info": {
+      "text": [
+        "Sojourner was the rover on NASA's Mars Pathfinder mission. It weighed 10.6 kg and stood about 30 cm tall when fully upright. It was named after Sojourner Truth, the American civil-rights crusader.",
+        "Pathfinder landed on July 4, 1997, in Ares Vallis, an ancient flood plain in the northern hemisphere and one of the rockiest places on Mars. On the night of July 5 the rover rolled off the lander down a rear ramp tilted 20 degrees. The lander photographed it on the ground right away, in case its camera failed later.",
+        "Sojourner used an Alpha Proton X-Ray Spectrometer to work out what the rocks and soil were made of, and sent back more than 550 images. The lander, the Carl Sagan Memorial Station, returned over 16,500 of its own. Its last data arrived on September 27, 1997, and that ended the mission."
+      ],
+      "photos": ["art/photos/sojourner/1.jpg", "art/photos/sojourner/2.jpg"]
+    }
+  },
+  "opportunity": {
+    "name": "Opportunity",
+    "mission": "Mars Exploration Rover, Meridiani Planum, Mars",
+    "nickname": "Oppy",
+    "year": 2004,
+    "planet": "mars",
+    "img": "art/props/opportunity.png",
+    "rank": "legendary",
+    "stats": { "Speed": 24, "Endurance": 99, "Science": 92 },
+    "achievement": { "title": "Ninety days, fifteen years", "text": "Find Opportunity at Meridiani Planum." },
+    "info": {
+      "text": [
+        "Opportunity landed at Meridiani Planum on January 24, 2004. NASA chose the spot because its mineral deposits hinted that Mars had once been wet.",
+        "Working through the rock record alongside its twin, Spirit, Opportunity helped show that water had lasted on the surface of ancient Mars. The two rovers changed how scientists understood the planet's early history.",
+        "It drove 45.16 km (28.06 miles), the record for driving on another world until Perseverance passed it on October 11, 2026. Opportunity ran on solar power, and in 2018 a dust storm covered the whole planet, including its patch of sky. It last spoke to Earth on June 10, 2018, about 14 years after landing."
+      ],
+      "photos": ["art/photos/opportunity/1.jpg", "art/photos/opportunity/2.jpg"]
+    }
+  },
+  "ingenuity": {
+    "name": "Ingenuity",
+    "mission": "Mars helicopter, Jezero Crater, Mars",
+    "nickname": "Ginny",
+    "year": 2021,
+    "planet": "mars",
+    "img": "art/props/ingenuity.png",
+    "rank": "legendary",
+    "stats": { "Speed": 88, "Endurance": 82, "Science": 58 },
+    "achievement": { "title": "First flight on another world", "text": "Find Ingenuity in Jezero Crater." },
+    "info": {
+      "text": [
+        "Ingenuity was a small helicopter that came to Mars with the Perseverance rover and landed in Jezero Crater on February 18, 2021. It weighed 1.8 kg, and its rotor blades spanned just under 1.2 m.",
+        "It first flew on April 19, 2021. The plan allowed at most five test flights in 30 days. Ingenuity flew 72 times, covered about 17 km and climbed as high as 24 m.",
+        "Its last flight was on January 18, 2024, and the mission was declared complete a week later, on January 25."
+      ],
+      "photos": ["art/photos/ingenuity/1.jpg", "art/photos/ingenuity/2.jpg"]
+    }
+  },
+  "voyager-1": {
+    "name": "Voyager 1",
+    "mission": "Interstellar space, 24 billion km from home",
+    "nickname": "The Last Signal",
+    "year": 1977,
+    "planet": "space",
+    "img": "art/props/voyager.png",
+    "rank": "unreal",
+    "stats": { "Speed": 100, "Endurance": 100, "Science": 100 },
+    "achievement": { "title": "The end?", "text": "Find Voyager 1, still talking to Earth." },
+    "info": { "text": [], "photos": ["art/photos/voyager-1/1.jpg", "art/photos/voyager-1/2.jpg"] },
+    "extra": {
+      "name": "The Golden Record",
+      "img": "art/props/golden_record.png",
+      "sub": "Carried by Voyager 1, 1977",
+      "tip": "A gold-plated record of Earth: greetings in 55 languages, music, and pictures.",
+      "info": {
+        "text": [
+          "The Golden Record is a 12-inch (30 cm) phonograph record made of gold-plated copper. Voyager 1 and Voyager 2 both launched in 1977, and each carries one. It is a message for anyone who might find the spacecraft one day, telling the story of Earth in sounds and pictures. The idea grew out of the metal plaques on Pioneer 10 and 11.",
+          "A committee chaired by Carl Sagan chose what went on it. There are 115 pictures stored in analog form, and spoken greetings in 55 languages. The greetings start with Akkadian, spoken in Sumer about 6,000 years ago, and end with Wu, a modern Chinese dialect. Then come the sounds of Earth: surf, wind, thunder, birds and whales. About 90 minutes of music from many cultures and eras fill the rest, and printed messages from President Carter and U.N. Secretary General Waldheim go along with it.",
+          "Each record sits in an aluminum jacket with a cartridge and a needle. Drawings on the cover explain how to play it at 16 2/3 revolutions per minute, from the outside edge inward, and how to turn the signal back into pictures. A map of 14 pulsars shows where our Sun is. A small spot of ultra-pure uranium-238 on the cover works as a clock. Half of it decays in about 4.5 billion years, so whoever finds it can work out how long the record has been travelling.",
+          "Eight records were cut and gold-plated on August 23, 1977, in Gardena, California. Etched by hand into the surface is the line \"To the makers of music – all worlds, all times.\" The Voyagers will need about 40,000 years to come near another planetary system. Sagan said the record would only ever be played if advanced spacefaring civilizations exist in interstellar space."
+        ],
+        "photos": ["art/photos/golden-record/1.jpg", "art/photos/golden-record/2.jpg"]
+      }
+    }
+  }
+}

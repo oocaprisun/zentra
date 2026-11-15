@@ -1,0 +1,27 @@
+{
+  "id": "flashback2",
+  "steps": [
+    { "bg": "art/bg/rocket-scrapyard.png", "pan": "left", "music": "audio/quiet-piano.mp3", "fx": "fadeIn" },
+    { "stamp": ["Before the Launch", "An abandoned launch site"] },
+    { "say": "MICHAEL", "text": "This rocket is rusty, but the frame is solid. I think we can fix it." },
+    { "say": "EMILY", "text": "I wrote it in my log: found an old rocket, day 17. Might make a nice museum one day." },
+    { "bg": "art/bg/rocket-scrapyard.png", "pan": "zoomIn", "sfx": "audio/workshop.mp3", "say": "", "text": "For weeks they scraped, welded and tested every part, one bolt at a time." },
+    { "puzzle": "wires", "config": { "title": "Rewire the control panel", "prompt": "Connect each wire to the terminal of the same color.", "colors": ["red", "blue", "yellow", "green"], "hint": "Follow each color from left to right. Start with the one that is easiest to see.", "learnTitle": "Why colors matter", "learn": "Engineers use color codes so nobody mixes up wires. On the Apollo spacecraft, thousands of wires were labeled and checked by hand, because one wrong connection could stop a whole mission." } },
+    { "puzzle": "screws", "config": { "title": "Seal the hatch", "prompt": "Tighten the screws in a criss-cross pattern so the hatch closes evenly.", "hint": "After a screw, go to the one diagonally opposite.", "learnTitle": "The criss-cross rule", "learn": "Tightening bolts in a star or criss-cross pattern spreads the pressure evenly. If you tighten one side first, the panel can bend and leak. Spacecraft hatches must seal perfectly, because outside there is no air at all." } },
+    { "say": "AURORA", "text": "Great work, team! But there is a problem..." },
+    { "say": "EMILY", "text": "What??"},
+    { "say": "AURORA", "text": "..."},
+    { "say": "EMILY", "text": "Aurora!"},
+    { "say": "AURORA", "text": "There are only 3 seats. One of us has to stay behind and guide the ship."},
+    { "say": "EMILY", "text": "It's okay, I will stay. I was scared to go anyway."},
+    { "say": "MICHAEL", "text": "All of us are..."},
+    { "bg": "art/bg/zentra-hq-ruins.png", "pan": "zoomOut", "music": "audio/rocket_engine_background.mp3", "musicVolume": 0.5, "fx": "shake", "say": "", "text": "Countdown. Three volunteers. One old rocket, and a sky that was waiting for it." },
+    { "sfx": "audio/countdown.wav", "sfxVolume": 0.8, "fx": "rumble", "say": "", "text": "3", "style": "countdown", "speed": 0, "auto": 1150 },
+    { "fx": "shake", "say": "", "text": "2", "style": "countdown", "speed": 0, "auto": 1150 },
+    { "fx": "shake", "say": "", "text": "1", "style": "countdown", "speed": 0, "auto": 1300 },
+    { "fx": ["shake", "flash"], "sfx": "audio/rocket_takeoff_sound.mp3", "musicVolume": 1, "wait": 1800 },
+    { "fx": "shake", "wait": 1800 },
+    { "fx": "shake", "wait": 2200 },
+    { "fx": ["calm", "clear", "fadeOut"], "music": null }
+  ]
+}

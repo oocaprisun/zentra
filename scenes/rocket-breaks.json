@@ -1,0 +1,53 @@
+{
+  "id": "rocket-breaks",
+  "suits": true,
+  "steps": [
+    { "bg": "art/bg/ship-interior.png", "pan": "zoomIn", "music": "audio/rocket_engine_background.mp3", "musicVolume": 0.5, "fx": "fadeIn" },
+    { "stamp": ["ZENTRA / Mission Day 236", "Ship systems, route to Mars"] },
+    { "fx": "shake", "sfx": "audio/explosion.mp3", "sfxVolume": 0.2, "say": "MICHAEL", "text": "Power bus three is dead. Without it, the heater goes next." },
+    { "say": "EMILY", "style": "radio", "text": "I'm logging everything. Let's fix it step by step." },
+    { "puzzle": "order", "config": {
+      "title": "Reroute the power",
+      "prompt": "Put the repair steps in the right order.",
+      "items": [
+        "Isolate the damaged power bus",
+        "Open the backup relay",
+        "Route power to life support",
+        "Confirm the heater is running"
+      ],
+      "layout": "column",
+      "hint": "Isolate the broken part before you move anything else.",
+      "learn": "Engineers isolate a damaged circuit first so the fault cannot spread to the rest of the ship."
+    } },
+    { "say": "CLYDE", "text": "Power is back. Now the air. The gauge is way off." },
+    { "puzzle": "dial", "config": {
+      "title": "Tune the oxygen pressure",
+      "prompt": "Turn the dial until the cabin pressure reads normal.",
+      "min": 0,
+      "max": 120,
+      "target": 101,
+      "tolerance": 4,
+      "unit": "kPa",
+      "hint": "Normal air pressure at sea level is a little above 100.",
+      "learn": "Cabin air is kept near sea-level pressure, about 101 kilopascals, so people can breathe easily."
+    } },
+    { "say": "AURORA", "text": "Air is stable. Last step: restart the main systems safely." },
+    { "puzzle": "order", "config": {
+      "title": "Restart the systems",
+      "prompt": "Restart everything in the safe order.",
+      "items": [
+        "Check the coolant pumps",
+        "Restart the guidance computer",
+        "Run the engine self-test",
+        "Start the main engine"
+      ],
+      "layout": "column",
+      "hint": "Test before you start. Never skip the self-test.",
+      "learn": "Spacecraft restarts follow checklists, so each system is checked before the next one starts."
+    } },
+    { "bg": "art/bg/ship-interior.png", "pan": "zoomOut", "music": "audio/quiet-piano.mp3", "say": "AURORA", "text": "The ship is back. Everybody okay?" },
+    { "say": "MICHAEL", "text": "Everybody's fine. The heater is warm, and we're finishing this mission." },
+    { "say": "EMILY", "style": "radio", "text": "Log entry: the ship is healthy, and so is the crew." },
+    { "fx": ["clear", "fadeOut"], "music": null }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "ending",
+  "steps": [
+    { "bg": "art/bg/space.png", "pan": "zoomOutSlow", "music": "audio/quiet-piano.mp3", "musicVolume": 0.35,
+      "actors": [{ "img": "art/chars/aurora_astronaut.png", "x": 40, "y": 260, "h": 440, "float": true }],
+      "fx": "fadeIn" },
+    { "stamp": ["Suit oxygen: 4%", "Somewhere between Mars and Earth", "0 days after impact"] },
+    { "say": "", "text": "Silence. The ship is gone. Only one suit light is still blinking." },
+    { "say": "AURORA", "style": "radio", "text": "Emily... can you hear me? Anyone?" },
+    { "say": "", "text": "Only static. Breathing gets slow and heavy." },
+    { "actors": [
+        { "img": "art/chars/aurora_astronaut.png", "x": 40, "y": 260, "h": 440, "float": true },
+        { "img": "art/props/voyager.png", "x": 61, "from": 118, "enter": 12, "y": 330, "h": 380, "float": true, "delay": -3 }
+      ],
+      "say": "", "text": "Then, out of the dark, something golden drifts closer." },
+    { "say": "AURORA", "style": "radio", "text": "A dish antenna. A long arm. A golden disc... No. It can't be." },
+    { "say": "AURORA", "style": "radio", "text": "Voyager 1. Emily told us about you, back in the bunker." },
+    { "rover": "voyager-1" },
+    { "say": "AURORA", "style": "radio", "text": "Launched in 1977. Past Jupiter, past Saturn. In 2012 you left the Sun's bubble, into interstellar space." },
+    { "say": "AURORA", "style": "radio", "text": "And you carry the Golden Record. Greetings in 55 languages, music, rain, laughter, pictures of Earth." },
+    { "say": "AURORA", "style": "radio", "text": "Instructions on the cover, so anyone who finds you can play it." },
+    { "say": "", "text": "But Voyager 1 is more than 24 billion kilometers away. It could never be here." },
+    { "say": "AURORA", "style": "radio", "text": "I know. My oxygen is almost gone. I'm seeing things." },
+    { "say": "AURORA", "style": "radio", "text": "ZENTRA to base. Mission complete. The parts are coming home, Emily. Build something new with them." },
+    { "actors": [
+        { "img": "art/chars/aurora_astronaut.png", "x": 40, "y": 260, "h": 440, "float": true },
+        { "img": "art/props/voyager.png", "x": 61, "from": 118, "enter": 12, "y": 330, "h": 380, "float": true, "delay": -3, "fadeOut": 4 }
+      ],
+      "say": "", "text": "The golden light fades. Static." },
+    { "say": "", "text": "The real Voyager 1 is still out there, still talking to Earth. Waiting for the day someone might discover it." },
+    { "musicVolume": 1, "musicFade": 6000, "fx": "fadeOutSlow" },
+    { "fx": "clear", "musicVolume": 0, "musicFade": 5000, "wait": 5000 },
+    { "music": null, "wait": 1000 }
+  ]
+}

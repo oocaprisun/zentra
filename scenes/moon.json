@@ -1,0 +1,92 @@
+{
+  "id": "moon",
+  "suits": true,
+  "steps": [
+    { "fx": ["black", "rumble"], "sfx": "audio/rocket_takeoff_sound.mp3", "sfxVolume": 0.5, "wait": 2200 },
+    { "fx": "calm", "sfx": "audio/explosion.mp3", "sfxVolume": 0.3, "wait": 500 },
+    { "stamp": ["Stop 1: Tranquility Base", "Sea of Tranquility, the Moon"] },
+    { "bg": "art/bg/moon.png", "pan": "zoomOut", "music": "audio/moon-theme.mp3", "fx": "fadeInSlow" },
+    { "say": "MICHAEL", "text": "Touchdown. Everything feels so light here." },
+    { "say": "AURORA", "text": "Look. Four gold legs and a ladder. That's the bottom half of Eagle, from Apollo 11." },
+    { "rover": "eagle" },
+    { "say": "CLYDE", "text": "July 20, 1969. The first people to walk on the Moon came down that ladder." },
+    { "say": "AURORA", "text": "The top half flew them home. This part was the launch pad, so it stayed behind." },
+    { "say": "EMILY", "style": "radio", "text": "Your voices reach me a little more than one second late. It feels like an echo from the sky." },
+    { "say": "MICHAEL", "text": "Their seismometer stopped answering in August 1969. But the mirror next to it needs no power at all." },
+    { "say": "EMILY", "style": "radio", "text": "Then let's use it. Help me point our laser at it." },
+    { "puzzle": "dial", "config": {
+      "title": "Aim the laser",
+      "prompt": "Turn the dial until the beam hits the Apollo 11 mirror.",
+      "min": 0, "max": 100, "target": 37, "tolerance": 3, "unit": "deg",
+      "hint": "Small turns matter. Watch the meter fill up.",
+      "learnTitle": "The mirror that still works",
+      "learn": "Apollo 11 left a laser retroreflector, a panel of special mirrors that sends light straight back. Light needs about 2.5 seconds to reach the Moon and return. By timing it, scientists learned the Moon drifts away from Earth about 3.8 cm every year."
+    } },
+    { "say": "CLYDE", "text": "The beam came back. After all these years, it still works." },
+
+    { "bg": "art/bg/moon.png", "pan": "left", "actors": [
+      { "img": "art/chars/aurora_astronaut.png", "x": 11 },
+      { "img": "art/chars/michael_astronaut.png", "x": 24 },
+      { "img": "art/chars/clyde_astronaut.png", "x": 37 },
+      { "img": "art/props/surveyor.png", "x": 72, "h": 340 }
+    ], "fx": "flash", "say": "", "text": "A short hop west, to the Ocean of Storms." },
+    { "stamp": ["Stop 2: Surveyor 3", "Ocean of Storms, the Moon"] },
+    { "say": "MICHAEL", "text": "A small robot lander, from 1967. Someone took its camera." },
+    { "say": "AURORA", "text": "Apollo 12 did. They landed about 180 meters away and cut off its parts to bring them home." },
+    { "say": "CLYDE", "text": "Scientists wanted to see what two and a half years on the Moon does to metal and glass." },
+    { "say": "MICHAEL", "text": "So Apollo 12 did our job first. They recovered old hardware to study it." },
+    { "say": "AURORA", "text": "Its scoop arm and legs are still here. They come with us." },
+    { "rover": "surveyor-3" },
+    { "say": "EMILY", "style": "radio", "text": "Its landing log is scrambled. Can you put it back in order?" },
+    { "puzzle": "order", "config": {
+      "title": "Rebuild Surveyor's landing",
+      "prompt": "Put Surveyor 3's landing in the right order.",
+      "items": [
+        "Shiny rocks confuse the landing radar",
+        "The engine does not shut off in time",
+        "Bounce! Up to 10 meters high",
+        "A second, smaller bounce",
+        "Soft landing on the third touch",
+        "First TV pictures sent to Earth"
+      ],
+      "layout": "column",
+      "hint": "The pictures came last, less than an hour after it settled.",
+      "learnTitle": "Wet sand",
+      "learn": "Surveyor 3 bounced twice before landing on April 20, 1967. Then it dug trenches with a scoop and sent 6,326 pictures. The soil felt like wet sand, strong enough to hold a crewed lander. That told NASA the Apollo astronauts could land safely."
+    } },
+    { "say": "CLYDE", "text": "This little robot checked the ground so people could follow." },
+
+    { "bg": "art/bg/moon.png", "pan": "right", "actors": [
+      { "img": "art/chars/aurora_astronaut.png", "x": 11 },
+      { "img": "art/chars/michael_astronaut.png", "x": 24 },
+      { "img": "art/chars/clyde_astronaut.png", "x": 37 },
+      { "img": "art/props/rover.png", "x": 72, "h": 320 }
+    ], "fx": "flash", "say": "", "text": "Last stop: the foot of the Apennine Mountains." },
+    { "stamp": ["Stop 3: Hadley-Apennine", "Apollo 15 landing site"] },
+    { "say": "AURORA", "text": "A car on the Moon. Apollo 15's rover, the first one ever driven here." },
+    { "rover": "lrv" },
+    { "say": "MICHAEL", "text": "In 1971 they drove almost 28 kilometers with it, and brought back 77 kilos of rocks." },
+    { "say": "CLYDE", "text": "And over there, their science station. It ran on heat from a small plutonium generator." },
+    { "say": "MICHAEL", "text": "Heat in, electricity out, for years, with no sun needed. If we copy that design, the bunker never goes dark." },
+    { "say": "EMILY", "style": "radio", "text": "It sent data to Earth for six years, until NASA switched all the stations off in September 1977." },
+    { "say": "AURORA", "text": "Our rover is still folded on the ship. Let's do it the way they did." },
+    { "puzzle": "order", "config": {
+      "title": "Unfold the rover",
+      "prompt": "Put the steps in the right order.",
+      "items": [
+        "Release the latch on the folded rover",
+        "Lower the rover with the pulleys",
+        "Pull the tapes to unfold the frame",
+        "Lock the wheels into place"
+      ],
+      "layout": "column",
+      "hint": "You cannot pull the tapes before the rover is on the ground.",
+      "learnTitle": "A car that folds",
+      "learn": "The Lunar Roving Vehicle traveled folded against the side of the lunar module. Astronauts lowered it with pulleys and unfolded it with tapes. With it, Apollo 15 could explore up to 5 km away from the lander."
+    } },
+    { "say": "MICHAEL", "text": "Fun fact: here, the commander dropped a hammer and a feather. They hit the ground at the same time." },
+    { "say": "CLYDE", "text": "No air, nothing to slow the feather. Just like Galileo said." },
+    { "say": "AURORA", "text": "Pack the samples. Next stop, Mars." },
+    { "fx": ["clear", "fadeOut"], "music": null }
+  ]
+}

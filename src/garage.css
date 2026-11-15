@@ -1,0 +1,131 @@
+/* Hangar button + garage screen + rover info window (src/garage.js) */
+
+/* keep the garage animated while the mission behind it is frozen */
+#stage.paused #garage, #stage.paused #garage * { animation-play-state: running !important; }
+#stage.in-garage #skip { visibility: hidden; }
+
+/* ---- Hangar button: sits in the bottom letterbox, mirrors "Skip scene" top-right ---- */
+#hangar-btn { position: absolute; left: 40px; bottom: 18px; z-index: 30; display: flex; align-items: center; gap: 14px; animation: gar-in .6s ease-out;
+  font-size: 22px; padding: 12px 22px 12px 18px; color: var(--ink); background: var(--navy);
+  box-shadow: inset 0 0 0 4px var(--navy-light), 0 var(--px) 0 var(--navy-deep); transition: opacity .25s, filter .15s; }
+#hangar-btn svg { width: 30px; height: 26px; }
+#hangar-btn:hover:not(:disabled) { filter: brightness(1.25); }
+#hangar-btn:disabled { opacity: .35; cursor: not-allowed; filter: grayscale(.6); }
+#hangar-btn:disabled:active { transform: none; box-shadow: inset 0 0 0 4px var(--navy-light), 0 var(--px) 0 var(--navy-deep); }
+
+/* ---- garage screen ---- */
+#garage { position: absolute; inset: 0; z-index: 45; overflow: hidden;
+  /* stand-in hangar if art/bg/garage.png is missing */
+  background: linear-gradient(#0d1428 0 58%, #1c2848 58% 59%, #141d35 59%), #0d1428; }
+#garage .gar-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#garage .gar-bg:not([src]) { display: none; }
+#garage::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 55% 60% at 50% 62%, transparent 40%, rgba(5, 8, 18, .55) 100%); }
+#garage > *:not(.gar-bg) { z-index: 2; }
+
+.gar-back { position: absolute; left: 56px; top: 48px; font-size: 26px; padding: 14px 28px; }
+
+/* the bay: rover stands centred on a floor shadow */
+.gar-bay { position: absolute; left: 50%; bottom: 140px; width: 1340px; height: 800px; transform: translateX(-50%); }
+.gar-floor { position: absolute; left: 50%; bottom: -24px; width: 900px; height: 72px; transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, .25) 55%, transparent 72%); }
+.gar-rover { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding: 0; background: none; box-shadow: none; color: var(--ink); cursor: pointer; }
+.gar-rover:active { transform: none; box-shadow: none; }
+.gar-rover:hover { filter: none; }
+.gar-rover img { width: 1240px; height: 660px; object-fit: contain; transition: transform .2s, filter .2s; }
+.gar-rover:hover img, .gar-rover:focus-visible img { transform: translateY(-8px); filter: drop-shadow(0 0 18px rgba(255, 200, 58, .45)); }
+.gar-unreal:hover img, .gar-unreal:focus-visible img { filter: drop-shadow(0 0 18px rgba(197, 155, 255, .6)); }
+.gar-rover:focus-visible { outline: none; }
+.gar-rover .gar-noart { display: none; }
+.gar-rover.no-art img { display: none; }
+.gar-rover.no-art .gar-noart { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  width: 820px; height: 480px; margin-bottom: 150px; font-family: var(--font-hud); font-size: 48px;
+  background: repeating-linear-gradient(45deg, rgba(74, 100, 163, .18) 0 18px, transparent 18px 36px);
+  box-shadow: inset 0 0 0 var(--px) var(--navy-light); }
+.gar-noart small { font-family: var(--font-text); font-size: 24px; color: var(--steel); }
+
+/* locked (card not collected yet): dark silhouette, not clickable */
+.gar-rover.is-locked { cursor: default; }
+.gar-rover.is-locked img { filter: brightness(0) drop-shadow(0 0 2px rgba(125, 143, 189, .55)); opacity: .85; }
+.gar-rover.is-locked:hover img, .gar-rover.is-locked:focus-visible img { transform: none; filter: brightness(0) drop-shadow(0 0 2px rgba(125, 143, 189, .55)); }
+.gar-rover.is-locked .gar-noart { color: var(--steel); }
+.gar-plate.is-locked h2 { color: var(--steel); }
+.gar-plate.is-locked p { color: var(--muted); }
+
+/* "Click me!" pixel cloud above the rover */
+.gar-bubble { position: relative; margin-bottom: 40px; padding: 12px 24px 14px;
+  font-family: var(--font-hud); font-size: 26px; color: var(--navy-deep); background: var(--ink); white-space: nowrap;
+  box-shadow: 0 calc(-1 * var(--px)) 0 var(--ink), 0 var(--px) 0 var(--ink), calc(-1 * var(--px)) 0 0 var(--ink), var(--px) 0 0 var(--ink),
+    0 calc(2 * var(--px)) 0 #9aa6c4;
+  animation: gar-bob 1.6s ease-in-out infinite; pointer-events: none; }
+.gar-bubble::after { content: ''; position: absolute; left: 50%; top: 100%; width: 18px; height: 18px; translate: -50% 6px;
+  background: var(--ink); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+@keyframes gar-in { from { opacity: 0; translate: 0 12px; } }
+@keyframes gar-bob { 50% { transform: translateY(-10px); } }
+
+/* arrows */
+.gar-arrow { position: absolute; top: 50%; translate: 0 -50%; width: 120px; height: 150px; padding: 0;
+  display: grid; place-items: center; background: var(--navy); color: var(--ink);
+  box-shadow: inset 0 0 0 var(--px) var(--navy-light), 0 var(--px) 0 var(--navy-deep); }
+.gar-arrow svg { width: 48px; height: 64px; transition: transform .15s; }
+.gar-prev { left: 120px; }
+.gar-next { right: 120px; }
+.gar-prev:hover svg { transform: translateX(-6px); }
+.gar-next:hover svg { transform: translateX(6px); }
+.gar-arrow:hover { filter: brightness(1.25); }
+
+/* rover + extra item slide together */
+.gar-slot { position: absolute; inset: 0; }
+/* extra item (Golden Record): floats up-right of the rover */
+.gar-extra { position: absolute; right: -40px; top: 40px; z-index: 3; width: 190px; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  background: none; box-shadow: none; color: var(--ink); animation: gar-coin 3s ease-in-out infinite alternate; }
+.gar-extra:hover, .gar-extra:active { filter: none; transform: none; box-shadow: none; }
+.gar-extra img { width: 170px; height: 170px; image-rendering: pixelated; border-radius: 50%; transition: transform .2s, filter .2s;
+  filter: drop-shadow(0 0 16px rgba(255, 200, 58, .7)) drop-shadow(0 10px 10px rgba(0, 0, 0, .5)); }
+.gar-extra:hover img, .gar-extra:focus-visible img { transform: scale(1.08); filter: drop-shadow(0 0 26px rgba(255, 214, 90, 1)) drop-shadow(0 10px 10px rgba(0, 0, 0, .5)); }
+.gar-extra:focus-visible { outline: none; }
+.gar-extra-name { font-family: var(--font-hud); font-size: 20px; color: var(--legend, #ffc83a); text-shadow: 0 2px 0 rgba(0,0,0,.7), 0 0 12px rgba(255,200,58,.5); white-space: nowrap; }
+.gar-extra-tip { position: absolute; right: calc(100% + 16px); top: 30px; width: 320px; padding: 12px 16px 14px; text-align: left;
+  font-family: var(--font-text); font-size: 20px; line-height: 1.35; color: #f3f6ff;
+  background: rgba(10, 16, 36, .88); box-shadow: inset 0 0 0 1px rgba(255, 200, 58, .55), 0 0 18px rgba(255, 200, 58, .25);
+  opacity: 0; translate: 8px 0; pointer-events: none; transition: opacity .18s, translate .18s; }
+.gar-extra:hover .gar-extra-tip, .gar-extra:focus-visible .gar-extra-tip { opacity: 1; translate: 0 0; }
+@keyframes gar-coin { from { translate: 0 -10px; rotate: -5deg; } to { translate: 0 10px; rotate: 5deg; } }
+.gar-soon { color: var(--steel); font-style: italic; }
+
+/* name plate under the bay */
+.gar-plate { position: absolute; left: 50%; bottom: 56px; transform: translateX(-50%); min-width: 640px; padding: 18px 40px 20px;
+  text-align: center; background: var(--panel); box-shadow: 0 0 0 var(--px) var(--navy-light); }
+.gar-plate h2 { margin: 0; font-family: var(--font-hud); font-weight: 400; font-size: 48px; line-height: 1.1; }
+.gar-plate p { margin: 6px 0 0; font-size: 28px; color: #aebfe8; }
+.gar-count { position: absolute; right: 16px; top: 10px; font-family: var(--font-hud); font-size: 18px; color: var(--steel); }
+
+/* ---- info window: the pause panel, bigger ---- */
+.gar-info { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; background: rgba(8, 12, 24, .8); }
+.gar-info[hidden] { display: none; }
+.gar-info-box { width: 1440px; max-height: 900px; display: flex; flex-direction: column; gap: 28px; padding: 44px 52px 36px;
+  background: var(--navy); box-shadow: 0 0 0 var(--px) var(--navy-light), 0 0 0 calc(2 * var(--px)) var(--navy-deep);
+  animation: gar-pop .22s cubic-bezier(.2, .9, .3, 1.25); }
+@keyframes gar-pop { from { transform: scale(.92); opacity: 0; } }
+.gar-info-box header { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; }
+.gar-info-box h2 { margin: 0; font-family: var(--font-hud); font-weight: 400; font-size: 56px; line-height: 1; }
+.gar-info-box header p { margin: 12px 0 0; font-size: 28px; color: #aebfe8; }
+.gar-rank { font-family: var(--font-hud); font-size: 24px; padding: 8px 16px; color: #1b1205; background: var(--legend, #ffc83a); box-shadow: 0 4px 0 var(--legend-deep, #9a6a12); }
+.gar-unreal .gar-rank { color: #150b2a; background: linear-gradient(90deg, var(--unreal-a, #ff7af5), var(--unreal-b, #8fe9ff), var(--unreal-c, #c59bff)); box-shadow: 0 4px 0 #5a3a8a; }
+.gar-info-body { display: grid; grid-template-columns: 520px 1fr; gap: 44px; min-height: 0; flex: 1; }
+.gar-info-body:not(:has(.gar-photos)) { grid-template-columns: 1fr; }
+.gar-photos { display: flex; flex-direction: column; gap: 20px; overflow-y: auto; max-height: 640px; }
+.gar-photos img { width: 100%; image-rendering: auto; box-shadow: 0 0 0 4px var(--navy-deep); }
+.gar-text { max-height: 640px; overflow-y: auto; padding-right: 20px; font-size: 30px; line-height: 1.5; max-width: 62ch; }
+.gar-text p { margin: 0 0 22px; }
+.gar-text:focus-visible { outline: 4px solid var(--ink); outline-offset: 8px; }
+.gar-text::-webkit-scrollbar, .gar-photos::-webkit-scrollbar { width: 12px; }
+.gar-text::-webkit-scrollbar-thumb, .gar-photos::-webkit-scrollbar-thumb { background: var(--navy-light); }
+.gar-text::-webkit-scrollbar-track, .gar-photos::-webkit-scrollbar-track { background: var(--navy-deep); }
+.gar-info-box footer { display: flex; justify-content: flex-end; align-items: center; gap: 28px; }
+.gar-info-box footer small { font-size: 22px; color: var(--steel); }
+
+@media (prefers-reduced-motion: reduce) {
+  .gar-bubble, .gar-info-box, .gar-extra { animation: none !important; }
+}

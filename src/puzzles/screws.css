@@ -1,0 +1,108 @@
+.screws-panel {
+  --sc-edge: #0c1226;
+  position: relative;
+  width: 620px;
+  height: 620px;
+  margin: 0 auto;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 6px, transparent 6px 12px),
+    var(--steel);
+  box-shadow:
+    0 0 0 var(--px, 6px) var(--navy-light),
+    0 0 0 calc(var(--px, 6px) * 2) var(--sc-edge),
+    inset 0 0 0 var(--px, 6px) rgba(255,255,255,.18),
+    inset 0 calc(var(--px, 6px) * -2) 0 0 rgba(20,29,53,.35),
+    0 24px 0 0 rgba(0,0,0,.28);
+  transition: box-shadow .3s steps(4);
+}
+.screws-panel::before { /* inner hatch frame */
+  content: '';
+  position: absolute;
+  inset: 150px;
+  background: var(--navy);
+  box-shadow: 0 0 0 6px var(--navy-deep), inset 0 0 0 6px var(--navy-light), inset 0 -12px 0 0 var(--navy-deep);
+}
+.screws-warp { animation: screws-warp .5s steps(6); }
+@keyframes screws-warp {
+  0%, 100% { transform: none; }
+  20% { transform: skew(-5deg, 2deg) rotate(-1.5deg); }
+  45% { transform: skew(4deg, -3deg) rotate(1.5deg); }
+  70% { transform: skew(-3deg, 1deg) rotate(-1deg); }
+}
+
+.screws-guide { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; }
+.screws-guide path { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 3 3; }
+.screws-hint .screws-guide { opacity: .28; }
+
+.screws-slot { position: absolute; width: 128px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.screws-slot-0 { left: 26px; top: 26px; }
+.screws-slot-1 { right: 26px; top: 26px; }
+.screws-slot-2 { right: 26px; bottom: 6px; }
+.screws-slot-3 { left: 26px; bottom: 6px; }
+
+.screws-panel .screws-screw {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: color-mix(in srgb, #c9d3ee calc((1 - var(--p, 0)) * 100%), #4b5a82);
+  box-shadow:
+    0 0 0 6px var(--sc-edge),
+    0 0 0 calc(6px + var(--t, 0) * 4px) color-mix(in srgb, var(--navy-deep) calc(var(--p, 0) * 100%), transparent),
+    inset 6px 6px 0 rgba(255,255,255,.45),
+    inset -8px -8px 0 rgba(20,29,53,.35);
+  transform: scale(calc(1 - var(--p, 0) * .14));
+  transition: transform .15s steps(3), background .15s steps(3);
+}
+.screws-panel .screws-screw:hover:not(.screws-done) { filter: brightness(1.12); transform: scale(calc(1.04 - var(--p, 0) * .14)); }
+.screws-panel .screws-screw:active { transform: scale(calc(.94 - var(--p, 0) * .14)); }
+.screws-panel .screws-screw:focus-visible { outline: 4px dashed var(--ink); outline-offset: 12px; }
+.screws-slit {
+  position: absolute;
+  inset: 0;
+  transform: rotate(calc(var(--t, 0) * 55deg));
+  transition: transform .18s steps(4);
+}
+.screws-slit::before, .screws-slit::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; top: calc(50% - 6px);
+  height: 12px;
+  background: var(--sc-edge);
+  box-shadow: 0 4px 0 rgba(255,255,255,.25);
+}
+.screws-slit::after { left: calc(50% - 6px); right: calc(50% - 6px); top: 14px; bottom: 14px; height: auto; box-shadow: none; display: none; }
+.screws-panel .screws-done { cursor: default; }
+
+.screws-pips { display: flex; gap: 8px; height: 12px; }
+.screws-pip { display: block; width: 12px; height: 12px; background: var(--sc-edge); box-shadow: inset 0 0 0 3px rgba(255,255,255,.15); }
+.screws-pip.screws-on { background: var(--ink); box-shadow: none; }
+
+.screws-label {
+  position: absolute;
+  left: 50%; top: 50%;
+  translate: -50% -50%;
+  font-family: var(--font-hud, monospace);
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: var(--ink);
+  opacity: 0;
+  z-index: 1;
+}
+.screws-sealed {
+  box-shadow:
+    0 0 0 var(--px, 6px) var(--ink),
+    0 0 0 calc(var(--px, 6px) * 2) var(--navy-light),
+    0 0 36px 12px rgba(245,247,252,.45),
+    inset 0 0 0 var(--px, 6px) rgba(255,255,255,.4);
+}
+.screws-sealed .screws-label { opacity: 1; }
+.screws-sealed .screws-guide { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .screws-warp { animation: none; transform: skew(-3deg, 1deg); }
+  .screws-panel, .screws-panel .screws-screw, .screws-slit { transition: none; }
+}

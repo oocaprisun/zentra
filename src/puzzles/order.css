@@ -1,0 +1,74 @@
+.order-wrap { display: flex; flex-direction: column; align-items: center; gap: 36px; width: 100%; }
+.order-list { display: flex; gap: 18px; max-width: 1500px; width: 100%; justify-content: center; }
+.order-col { flex-direction: column; align-items: stretch; max-width: 1100px; }
+.order-row { flex-direction: row; align-items: stretch; flex-wrap: nowrap; }
+
+.order-card {
+  font-family: var(--font-text, inherit);
+  font-size: 32px;
+  line-height: 1.25;
+  color: var(--ink);
+  background: var(--panel);
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+  padding: 18px 26px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow:
+    0 calc(var(--px, 6px) * -1) 0 0 var(--steel),
+    0 var(--px, 6px) 0 0 var(--steel),
+    calc(var(--px, 6px) * -1) 0 0 0 var(--steel),
+    var(--px, 6px) 0 0 0 var(--steel);
+  transform: none;
+  transition: transform .12s steps(3), box-shadow .12s steps(3);
+}
+.order-row .order-card { flex: 1 1 0; min-width: 0; align-items: center; text-align: center; padding: 18px; }
+.order-card:hover { transform: none; }
+.order-card:focus-visible { outline: 4px dashed var(--ink); outline-offset: 8px; }
+.order-img { display: block; width: 100%; max-height: 380px; object-fit: contain; image-rendering: pixelated; }
+.order-col .order-img { max-width: 260px; }
+
+.order-selected, .order-selected:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 calc(var(--px, 6px) * -1) 0 0 var(--amber),
+    0 var(--px, 6px) 0 0 var(--amber),
+    calc(var(--px, 6px) * -1) 0 0 0 var(--amber),
+    var(--px, 6px) 0 0 0 var(--amber);
+}
+.order-ok {
+  box-shadow:
+    0 calc(var(--px, 6px) * -1) 0 0 #8fae5a,
+    0 var(--px, 6px) 0 0 #8fae5a,
+    calc(var(--px, 6px) * -1) 0 0 0 #8fae5a,
+    var(--px, 6px) 0 0 0 #8fae5a;
+}
+.order-bad {
+  box-shadow:
+    0 calc(var(--px, 6px) * -1) 0 0 var(--rust),
+    0 var(--px, 6px) 0 0 var(--rust),
+    calc(var(--px, 6px) * -1) 0 0 0 var(--rust),
+    var(--px, 6px) 0 0 0 var(--rust);
+  animation: order-shake .4s steps(8);
+}
+.order-done {
+  color: #1a1206;
+  background: var(--amber);
+  box-shadow:
+    0 calc(var(--px, 6px) * -1) 0 0 #fff1c2,
+    0 var(--px, 6px) 0 0 #fff1c2,
+    calc(var(--px, 6px) * -1) 0 0 0 #fff1c2,
+    var(--px, 6px) 0 0 0 #fff1c2;
+}
+@keyframes order-shake {
+  0%, 100% { translate: 0 0; }
+  25% { translate: -8px 0; }
+  75% { translate: 8px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .order-card { transition: none; }
+  .order-bad { animation: none; }
+}

@@ -1,0 +1,163 @@
+/* Design tokens — change colors/fonts here only */
+:root {
+  --void: #000;
+  /* palette from color_reference.jpg: deep navy + clean white */
+  --navy: #26365c;       /* main UI blue */
+  --navy-deep: #141d35;  /* panels, darkest */
+  --navy-light: #4a64a3; /* borders, highlights */
+  --ink: #f5f7fc;        /* main text (white) */
+  --amber: #f5f7fc;      /* accent (kept name: puzzles use it) */
+  --rust: #c4512d;       /* warnings, accents */
+  --steel: #7d8fbd;      /* borders, muted */
+  --muted: #8a93a8;      /* small gray help text */
+  --panel: rgba(20, 29, 53, .94);
+  --alarm: #ff2a2a;
+  --font-text: "Pixelify Sans", system-ui, sans-serif;
+  --font-hud: "Silkscreen", monospace;
+  --px: 6px;             /* one "pixel" of UI chrome */
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: var(--void); overflow: hidden; color: var(--ink); font-family: var(--font-text); }
+img { image-rendering: pixelated; }
+
+/* Stage is always 1920x1080, scaled to fit by main.js */
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: center; overflow: hidden; background: var(--void); }
+#cam { position: absolute; inset: 0; }
+#bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#actors img { position: absolute; bottom: 140px; height: 512px; transform: translateX(-50%); }
+#actors img.flip { transform: translateX(-50%) scaleX(-1); }
+
+/* camera moves */
+.pan-zoomIn  { animation: zoomIn 14s linear forwards; }
+.pan-zoomOut { animation: zoomIn 14s linear reverse forwards; }
+/* very slow zoom out that lasts a whole long scene (ending) */
+.pan-zoomOutSlow { animation: zoomIn 150s cubic-bezier(.25,.1,.4,1) reverse forwards; }
+.pan-left    { animation: panL 14s linear forwards; }
+.pan-right   { animation: panL 14s linear reverse forwards; }
+@keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.15); } }
+@keyframes panL { from { transform: scale(1.12) translateX(4%); } to { transform: scale(1.12) translateX(-4%); } }
+
+/* letterbox */
+.bar { position: absolute; left: 0; right: 0; height: 96px; background: #000; z-index: 5; }
+.bar.top { top: 0; } .bar.bottom { bottom: 0; }
+
+/* effects */
+#fx { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+#fx.alarm { animation: alarm 1.2s steps(2) infinite; }
+@keyframes alarm { 0% { background: rgba(255,42,42,.28); } 100% { background: rgba(255,42,42,0); } }
+#fx.flash { animation: flash .5s ease-out; }
+@keyframes flash { from { background: #fff; } to { background: transparent; } }
+#stage.shake #cam { animation: shake .5s steps(6); }
+/* "fx": "rumble" = continuous heavy shake, "calm" stops it */
+#stage.rumble #cam { animation: rumble .14s steps(2) infinite; }
+@keyframes rumble { 0% { translate: -14px 8px; rotate: -.3deg; } 50% { translate: 12px -10px; rotate: .3deg; } 100% { translate: -6px -4px; } }
+@keyframes shake { 0%,100% { translate: 0 0; } 20% { translate: -18px 6px; } 40% { translate: 14px -12px; } 60% { translate: -10px 10px; } 80% { translate: 8px -4px; } }
+#fade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; transition: opacity .8s; z-index: 20; }
+#fade.on { opacity: 1; }
+#fade.white { background: #fff; transition: opacity 1.8s ease-out; }
+#fade.white.on { transition: opacity .08s; }
+
+/* location stamp (CoD style) */
+#stamp { position: absolute; left: 120px; bottom: 150px; z-index: 21; /* above #fade: titles can show on a black screen */ font-family: var(--font-hud); color: var(--amber); font-size: 30px; line-height: 1.5; text-shadow: 0 2px 0 rgba(0,0,0,.6); transition: opacity .6s; }
+#stamp div:first-child { font-size: 44px; color: var(--ink); }
+#stamp.out { opacity: 0; }
+/* "stampStyle": "red" (flashbacks, back to the opening) */
+#stamp.red, #stamp.red div:first-child { color: #ff3b30; text-shadow: 0 2px 0 rgba(0,0,0,.75), 0 0 18px rgba(255,59,48,.35); }
+
+/* subtitles: small white text on a tight translucent strip, letters pop in */
+#dialog { position: absolute; left: 50%; bottom: 140px; transform: translateX(-50%); width: 1400px; z-index: 7; text-align: center; cursor: pointer; }
+#text { display: inline; margin: 0; font-size: 34px; line-height: 1.7; color: #fff; padding: 4px 16px;
+  background: rgba(14, 16, 22, .62); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+#who { color: #aebfe8; margin-right: .5ch; }
+#dialog.narration #words { font-style: italic; color: #dfe3ec; }
+#dialog.radio #words { color: #bfe3ff; }
+.word { white-space: nowrap; }
+.ch { display: inline-block; white-space: pre; animation: pop .16s ease-out both; }
+@keyframes pop { from { transform: translateY(6px) scale(.6); opacity: 0; } 60% { transform: translateY(-2px) scale(1.12); opacity: 1; } to { transform: none; } }
+#next { margin-left: .6ch; font-size: 20px; color: #aebfe8; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* pause: freeze every animation on stage */
+#stage.paused *, #stage.paused { animation-play-state: paused !important; }
+#pause { position: absolute; inset: 0; z-index: 50; background: rgba(8, 12, 24, .78); display: flex; align-items: center; justify-content: center; }
+.pause-box { width: 760px; padding: 48px 56px; background: var(--navy); box-shadow: 0 0 0 var(--px) var(--navy-light), 0 0 0 calc(2 * var(--px)) var(--navy-deep); display: flex; flex-direction: column; gap: 28px; }
+.pause-box h2 { font-family: var(--font-hud); font-weight: 400; font-size: 56px; margin: 0 0 8px; color: var(--ink); }
+.pause-row { display: grid; grid-template-columns: 260px 1fr 70px; align-items: center; gap: 20px; font-size: 30px; }
+.pause-row output { text-align: right; font-family: var(--font-hud); font-size: 24px; color: #aebfe8; }
+.pause-row input { appearance: none; height: 12px; background: var(--navy-deep); cursor: pointer; }
+.pause-row input::-webkit-slider-thumb { appearance: none; width: 24px; height: 36px; background: var(--ink); box-shadow: 0 4px 0 #9aa6c4; }
+.pause-row input::-moz-range-thumb { width: 24px; height: 36px; background: var(--ink); border: 0; border-radius: 0; }
+.pause-row input:focus-visible { outline: 4px solid var(--ink); outline-offset: 6px; }
+.pause-box button { align-self: flex-start; margin-top: 12px; }
+.pause-box small { font-size: 22px; color: var(--steel); }
+
+/* small gray controls help, bottom-right of every puzzle */
+.pz-controls { position: absolute; right: 56px; bottom: 36px; text-align: right; font-size: 22px; line-height: 1.5; color: var(--muted); }
+
+/* puzzle host frame (each puzzle styles its own body) */
+#puzzle { position: absolute; inset: 96px 0; z-index: 8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; padding-bottom: 120px; background: rgba(16, 24, 46, .86); }
+.pz-head { text-align: center; max-width: 1300px; }
+.pz-head h2 { font-family: var(--font-hud); color: var(--amber); font-size: 44px; margin: 0 0 12px; font-weight: 400; }
+.pz-head p { font-size: 36px; margin: 0; }
+.pz-body { position: relative; }
+.pz-foot { min-height: 90px; text-align: center; }
+.pz-hint { color: #9fe0ff; font-size: 32px; margin: 0 0 12px; }
+.learn { max-width: 1200px; padding: 40px 56px; background: var(--panel); box-shadow: 0 0 0 var(--px) var(--navy-light); font-size: 36px; line-height: 1.4; }
+.learn h3 { font-family: var(--font-hud); font-weight: 400; color: var(--amber); margin: 0 0 16px; font-size: 34px; }
+
+/* buttons */
+button { font-family: var(--font-hud); font-size: 30px; color: var(--navy-deep); background: var(--ink); border: 0; padding: 16px 32px; cursor: pointer; box-shadow: 0 var(--px) 0 #9aa6c4; }
+button:hover { filter: brightness(1.1); }
+button:active { transform: translateY(var(--px)); box-shadow: none; }
+button:focus-visible { outline: var(--px) solid var(--ink); outline-offset: 4px; }
+#skip { position: absolute; right: 40px; top: 24px; z-index: 30; font-size: 20px; padding: 10px 18px; background: transparent; color: var(--steel); box-shadow: none; }
+#skip:hover { color: var(--ink); }
+
+/* start screen */
+#start { position: absolute; inset: 0; z-index: 40; background: #05070f; overflow: hidden; }
+/* solar system: drawn at the game's 480x270 art size, scaled 4x with crisp pixels */
+#orrery { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+/* darken the left side so the text reads over the orbits */
+#start::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(5,7,15,.92) 0%, rgba(5,7,15,.7) 34%, rgba(5,7,15,0) 58%); }
+#start .menu { position: absolute; z-index: 2; left: 150px; top: 50%; transform: translateY(-50%); width: 820px;
+  display: flex; flex-direction: column; align-items: flex-start; }
+#start h1 { font-family: var(--font-hud); font-weight: 400; font-size: 176px; line-height: 1; margin: 0 0 36px; color: var(--ink);
+  letter-spacing: .06em; text-shadow: 0 var(--px) 0 var(--navy); }
+#start p { font-size: 40px; line-height: 1.35; margin: 0 0 64px; max-width: 24ch; color: #cfd6e8; }
+.menu-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.menu-actions button { font-size: 34px; padding: 20px 40px; }
+/* when a save exists, "start" becomes the quieter secondary action */
+.menu-actions.has-save #go { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 4px var(--steel); font-size: 26px; padding: 14px 28px; margin-top: 18px; }
+.menu-actions.has-save #go:hover { box-shadow: inset 0 0 0 4px var(--ink); }
+#resume-where { font-size: 26px; color: #aebfe8; margin-top: -6px; }
+#start .menu-help { margin-top: 80px; font-size: 22px; color: var(--steel); }
+#start.gone { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  #cam, #fx, #stage.shake #cam, #stage.rumble #cam, #next { animation: none !important; }
+}
+
+/* big centered countdown ("style": "countdown") */
+#dialog.countdown { top: 50%; bottom: auto; transform: translate(-50%, -50%); }
+#dialog.countdown #text { font-size: 120px; line-height: 1.2; padding: 8px 40px; }
+#dialog.countdown #next, #dialog.countdown #who { display: none; }
+
+/* subtitle placed above the speaking character */
+#dialog.near { bottom: 800px; width: 760px; }
+#actors img { transition: filter .25s; }
+#actors img.quiet { filter: brightness(.55); }
+/* props (rovers, landers...) never dim when someone else is talking */
+#actors img.quiet[src*="art/props/"] { filter: none; }
+
+/* "float": true on an actor = drifting in zero gravity */
+#actors img.float { animation: drift 7s ease-in-out infinite alternate; }
+@keyframes drift { from { translate: 0 -14px; rotate: -4deg; } to { translate: 10px 16px; rotate: 5deg; } }
+/* "from": x% on an actor = glides in from that x to its own x */
+@keyframes enter { from { left: var(--from); } }
+
+/* "fx": "dream" = oxygen-starved vision: soft blur, warm glow, slow pulse; "undream" removes it */
+#stage.dream #bg, #stage.dream #actors { animation: dream 4s ease-in-out infinite alternate; }
+#stage.dream #fx { background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.75) 100%); }
+@keyframes dream { from { filter: blur(1px) sepia(.35) brightness(1.1); } to { filter: blur(3px) sepia(.6) brightness(1.3) saturate(1.4); } }

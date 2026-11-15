@@ -1,0 +1,89 @@
+/* Achievements tab, unlock popup, and the yellow trophy buttons. Stage px (1920x1080). */
+.ico-trophy, .ico-lock { display: block; width: 100%; height: 100%; }
+
+/* ---- trophy button (main menu + Esc menu) ---- */
+.ach-open { display: inline-flex; align-items: center; gap: 16px; background: transparent; color: var(--ink);
+  box-shadow: inset 0 0 0 4px var(--legend-deep); font-size: 26px; padding: 14px 28px 14px 22px; }
+.ach-open .ico-trophy { width: 36px; height: 36px; color: var(--legend); }
+.ach-open:hover { box-shadow: inset 0 0 0 4px var(--legend); }
+.ach-open:active { transform: translateY(var(--px)); }
+#menu-ach { margin-top: 6px; }
+.pause-box #pause-ach { align-self: flex-start; margin-top: 0; }
+
+/* ---- the tab ---- */
+#achievements { position: absolute; inset: 0; z-index: 55; display: grid; place-items: center; background: rgba(5, 7, 15, .86); }
+#achievements[hidden] { display: none; }
+.ach-box { width: 1240px; max-height: 960px; padding: 44px 52px 36px; display: flex; flex-direction: column; gap: 24px;
+  background: var(--navy-deep); box-shadow: 0 0 0 var(--px) var(--navy-light), 0 0 0 calc(2 * var(--px)) #0a0f1e, 0 30px 80px rgba(0,0,0,.6);
+  animation: achIn .28s cubic-bezier(.2,.9,.3,1.15); }
+@keyframes achIn { from { transform: translateY(24px) scale(.97); } } /* no opacity: a frozen animation must never hide the tab */
+.ach-head { display: flex; align-items: center; gap: 22px; }
+.ach-head-ico { width: 64px; height: 64px; color: var(--legend); filter: drop-shadow(0 0 14px rgba(255,200,58,.45)); }
+.ach-head h2 { margin: 0; font-family: var(--font-hud); font-weight: 400; font-size: 56px; color: var(--ink); }
+.ach-count { margin-left: auto; font-size: 28px; color: #aebfe8; }
+/* progress: 20 pips */
+.ach-meter { height: 18px; background: rgba(0,0,0,.45); position: relative; }
+.ach-meter::before { content: ''; position: absolute; inset: 0 auto 0 0; width: var(--p); background: var(--legend); box-shadow: inset 0 -5px 0 rgba(0,0,0,.22); }
+.ach-meter::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 calc(5% - 4px), var(--navy-deep) calc(5% - 4px) 5%); }
+
+.ach-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; overflow: auto; }
+.ach { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 22px; padding: 18px 22px; min-height: 112px;
+  background: #1b2848; box-shadow: inset 0 0 0 4px #24365e; }
+.ach-ico { width: 76px; height: 76px; padding: 10px; background: #0f1830; box-shadow: inset 0 0 0 4px rgba(255,255,255,.06); }
+.ach-txt { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ach-txt b { font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--ink); }
+.ach-txt small { font-size: 22px; line-height: 1.3; color: var(--steel); }
+.ach-rank { font-size: 22px; font-weight: 600; color: var(--legend); align-self: start; padding-top: 4px; }
+/* unlocked: gold trophy, warm edge */
+.ach.is-on { box-shadow: inset 0 0 0 4px var(--legend-deep); background: linear-gradient(100deg, #2a2f3e 0%, #1b2848 40%); }
+.ach.is-on .ach-ico { color: var(--legend); background: #2b2210; box-shadow: inset 0 0 0 4px rgba(255,200,58,.35); }
+/* locked: dim, grey padlock */
+.ach.is-off { opacity: .55; }
+.ach.is-off .ach-ico { color: #4b5878; }
+.ach.is-off .ach-rank { color: var(--steel); }
+/* the unreal one spans the full width */
+.ach-unreal { grid-column: 1 / -1; }
+.ach-unreal .ach-rank { background: linear-gradient(90deg, var(--unreal-a), var(--unreal-b), var(--unreal-c)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ach-unreal.is-off .ach-rank { background: none; color: var(--steel); }
+.ach-unreal.is-on { background: linear-gradient(100deg, #2c2160, #1b2848 55%); box-shadow: inset 0 0 0 4px #7a5ad0; }
+.ach-unreal.is-on .ach-ico { color: var(--unreal-b); background: #1a1440; box-shadow: inset 0 0 0 4px rgba(197,155,255,.4); }
+.ach-box footer { display: flex; align-items: center; justify-content: space-between; }
+.ach-box footer small { font-size: 22px; color: var(--steel); }
+
+/* ---- "achievement unlocked" popup, top right ---- */
+.ach-toast { position: absolute; top: 120px; right: 60px; z-index: 60; display: flex; align-items: center; gap: 20px;
+  padding: 18px 30px 18px 18px; background: var(--navy-deep); box-shadow: inset 0 0 0 4px var(--legend), 0 0 30px rgba(255,200,58,.35);
+  transform: translateX(140%); transition: transform .45s cubic-bezier(.2,.9,.3,1.2); pointer-events: none; }
+.ach-toast.is-in { transform: none; }
+.ach-toast .ach-ico { width: 72px; height: 72px; color: var(--legend); background: #2b2210; }
+.ach-toast .ach-txt small { color: var(--legend); font-size: 22px; }
+.ach-toast .ach-txt b { font-size: 32px; }
+.ach-toast.ach-unreal { box-shadow: inset 0 0 0 4px var(--unreal-c), 0 0 34px rgba(197,155,255,.45); }
+.ach-toast.ach-unreal .ach-ico { color: var(--unreal-b); background: #1a1440; }
+.ach-toast.ach-unreal .ach-txt small { color: var(--unreal-b); }
+@media (prefers-reduced-motion: reduce) { .ach-toast { transition: none; } .ach-box { animation: none; } }
+
+/* ---- compact version: replaces the pause panel (Esc menu), closed with the X ---- */
+#achievements.is-compact { background: transparent; }
+#pause.ach-swap .pause-box { visibility: hidden; }
+.is-compact .ach-box { width: 760px; padding: 36px 40px 32px; gap: 18px; background: var(--navy);
+  box-shadow: 0 0 0 var(--px) var(--navy-light), 0 0 0 calc(2 * var(--px)) var(--navy-deep); animation-duration: .18s; }
+.is-compact .ach-head { gap: 16px; }
+.is-compact .ach-head-ico { width: 48px; height: 48px; }
+.is-compact .ach-head h2 { font-size: 44px; }
+.is-compact .ach-count { font-size: 24px; }
+.ach-x { width: 60px; height: 60px; padding: 0; margin-left: 8px; font-family: var(--font-text); font-size: 46px; line-height: 1;
+  background: transparent; color: var(--ink); box-shadow: inset 0 0 0 4px var(--steel); }
+.ach-x:hover { box-shadow: inset 0 0 0 4px var(--ink); }
+.ach-x:active { transform: translateY(4px); }
+.is-compact .ach-meter { height: 14px; }
+.is-compact .ach-list { grid-template-columns: 1fr; gap: 8px; max-height: 600px; }
+.is-compact .ach { grid-template-columns: 44px 1fr auto; gap: 16px; min-height: 0; padding: 10px 16px; }
+.is-compact .ach-ico { width: 44px; height: 44px; padding: 6px; box-shadow: none; }
+.is-compact .ach-txt b { font-size: 24px; }
+.is-compact .ach-txt small { display: none; }
+.is-compact .ach-rank { font-size: 18px; align-self: center; padding: 0; }
+.is-compact .ach-unreal { grid-column: auto; }
+
+/* the pause menu freezes every animation on the stage; the tab opened from it must still animate in */
+#stage.paused #achievements, #stage.paused #achievements * { animation-play-state: running !important; }

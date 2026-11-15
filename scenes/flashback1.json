@@ -1,0 +1,24 @@
+{
+  "id": "flashback1",
+  "steps": [
+    { "bg": "art/bg/ruined_cities.png", "pan": "zoomOut", "music": "audio/quiet-piano.mp3", "musicVolume": 0.4, "fx": "fadeIn" },
+    { "stamp": ["Six months earlier", "Kennedy Space Center, Earth"], "stampStyle": "red" },
+    { "say": "", "text": "The cities had been quiet for months. Streets were cracked, and wind moved through empty windows." },
+    { "bg": "art/bg/bunker-hq.png", "pan": "zoomOut", "sfx": "audio/door_crancking.mp3" },
+    { "say": "", "text": "Deep underground, the last mission control was a concrete bunker lit by old screens." },
+    { "say": "CLYDE", "text": "Everyone who is left is in this room." },
+    { "say": "EMILY", "text": "Atleast that's what we know for now. There could be more living out there!"},
+    { "say": "MICHAEL", "text": "Oh, come on! You don' really think that someoune could really survive that!"},
+    { "say": "MICHAEL", "text": "The radiation levels are so high not even cockroaches are moving."},
+    { "say": "CLYDE", "text": "Let's keep being optimistic. With this attitude, we'll get nowhere."},
+    { "say": "AURORA", "text": "Then we work together. Nobody builds a rocket alone." },
+    { "say": "EMILY", "text": "Out there are machines built to survive cold, dust and radiation. Just like Earth now." },
+    { "say": "AURORA", "text": "The landers and rovers ZENTRA left on the Moon and Mars, decades ago." },
+    { "say": "CLYDE", "text": "We bring their parts home, take them apart and learn exactly how they were built." },
+    { "say": "MICHAEL", "text": "Reverse engineering. Then we build something new: a rover that can drive through the radiation up here." },
+    { "say": "EMILY", "text": "And search for anyone else who is still alive." },
+    { "say": "", "text": "They shook hands. On the wall, the old ZENTRA sign got a fresh coat of paint." },
+    { "bg": "art/bg/bunker-hq.png", "pan": "zoomIn", "sfx": "audio/door_crancking.mp3" },
+    { "fx": ["clear", "fadeOut"], "music": null }
+  ]
+}
