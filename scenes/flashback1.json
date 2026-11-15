@@ -2,7 +2,7 @@
   "id": "flashback1",
   "steps": [
     { "bg": "art/bg/ruined_cities.png", "pan": "zoomOut", "music": "audio/quiet-piano.mp3", "musicVolume": 0.4, "fx": "fadeIn" },
-    { "stamp": ["Six months earlier", "Kennedy Space Center, Earth"], "stampStyle": "red" },
+    { "stamp": ["Six months earlier", "Kennedy Space Center, Earth"], "stampStyle": "plate" },
     { "say": "", "text": "The cities had been quiet for months. Streets were cracked, and wind moved through empty windows." },
     { "bg": "art/bg/bunker-hq.png", "pan": "zoomOut", "sfx": "audio/door_crancking.mp3" },
     { "say": "", "text": "Deep underground, the last mission control was a concrete bunker lit by old screens." },

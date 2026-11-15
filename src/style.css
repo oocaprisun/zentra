@@ -63,6 +63,9 @@ img { image-rendering: pixelated; }
 #stamp div:first-child { font-size: 44px; color: var(--ink); }
 #stamp.out { opacity: 0; }
 /* "stampStyle": "red" (flashbacks, back to the opening) */
+/* "stampStyle": "plate": white text on a black box behind each line, for bright backgrounds */
+#stamp.plate div, #stamp.plate div:first-child { width: fit-content; color: #fff; background: #000; padding: 4px 18px; margin-bottom: 8px; text-shadow: none; }
+#stamp.plate div:empty { display: none; }
 #stamp.red, #stamp.red div:first-child { color: #ff3b30; text-shadow: 0 2px 0 rgba(0,0,0,.75), 0 0 18px rgba(255,59,48,.35); }
 
 /* subtitles: small white text on a tight translucent strip, letters pop in */
