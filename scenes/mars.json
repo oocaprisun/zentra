@@ -9,7 +9,7 @@
       {"img": "art/chars/aurora_astronaut.png", "x": 14},
       {"img": "art/chars/michael_astronaut.png", "x": 30},
       {"img": "art/chars/clyde_astronaut.png", "x": 46},
-      {"img": "art/props/sojourner.png", "x": 72, "h": 280}
+      {"img": "art/props/sojourner.png", "x": 72, "h": 420}
     ], "fx": "fadeInSlow" },
     { "fx": "shake", "say": "MICHAEL", "text": "We're down. Hard, but in one piece." },
     { "say": "AURORA", "text": "We came down on Mars, and we couldn't choose the spot." },
